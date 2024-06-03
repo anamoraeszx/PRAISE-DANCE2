@@ -38,6 +38,22 @@
             font-size: 20px;
             font-weight: bold;
         }
+
+        #alerta-bom img,
+        #alerta-medio img,
+        #alerta-ruim img {
+            width: 400px;
+            height: auto;
+            margin: 10px;
+        }
+
+        #alerta-bom,
+        #alerta-medio,
+        #alerta-ruim{
+            position: fixed;
+            bottom: 20px; /* Distância do rodapé da tela */
+            left: 20px; /* Distância da esquerda da tela (opcional) */
+        }
     </style>
 </head>
 
@@ -87,9 +103,21 @@
         ">
         Quiz Ballet
     </h2>
+    
     <div class="chart-c">
         <canvas id="myChart3"></canvas>
     </div>
+    <div id="alerta-bom" style="display: none;">
+        <img src="../assets/img/bom.gif" alt="Bom" />
+    </div>
+    <div id="alerta-medio" style="display: none;">
+        <img src="../assets/img/medio.gif" alt="Médio" />
+    </div>
+    <div id="alerta-ruim" style="display: none;">
+        <img src="../assets/img/ruim.gif" alt="Ruim" />
+    </div>
+
+  
 
 	<br><br>
     <center>
@@ -100,6 +128,9 @@
         <a href="dashboard.html" class="link"> Ver Mais</a>
     </center>
 	<br><br>
+
+    <duv id="msg"></duv>
+
     <script>
         const fetchData = (userId, quiz) => {
             return fetch(`/usuarios/obterPontuacoes/${userId}/${quiz}`)
@@ -158,7 +189,20 @@
             const userId = sessionStorage.ID_USUARIO;
             exibirGraficoEvolucaoAcertos(userId, 1, "myChart3");
             exibirGraficoEvolucaoAcertos(userId, 2, "myChart4");
-        };
+
+            fetchData(userId, 1).then(data => {
+        if (data) {
+            const acertos = data.map(item => item.acertos)[0];
+            if (acertos > 7) {
+                document.getElementById('alerta-bom').style.display = 'block';
+            } else if (acertos >= 5) {
+                document.getElementById('alerta-medio').style.display = 'block';
+            } else {
+                document.getElementById('alerta-ruim').style.display = 'block';
+            }
+        }
+    });
+};
 
         document.addEventListener("DOMContentLoaded", aparecerGraficos);
 

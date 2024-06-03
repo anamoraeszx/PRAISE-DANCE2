@@ -222,3 +222,35 @@ margin-top: 0;
 .grafico{
     background-color: #89023E;
 }
+
+.kpi {
+  width: 60%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  border: #E8CFC1 solid 3px;
+}
+
+.desempenho1 {
+  width: 30%;
+  height: 60px;
+  background-color: #E8CFC1;
+  border: #000000 solid 3px;
+}
+
+.desempenho2 {
+  width: 30%;
+  height: 60px;
+  background-color: #CBAE99;
+  border: #000000 solid 3px;
+}
+
+.desempenho3 {
+  width: 30%;
+  height: 60px;
+  background-color: #5D483C;
+  border: #000000 solid 3px;
+}

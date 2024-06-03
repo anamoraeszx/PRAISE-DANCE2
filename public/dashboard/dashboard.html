@@ -38,6 +38,38 @@
             font-size: 20px;
             font-weight: bold;
         }
+
+        #alerta-bom img,
+        #alerta-medio img,
+        #alerta-ruim img {
+            width: 400px;
+            height: auto;
+            margin: 10px;
+        }
+
+        #alerta-bom,
+        #alerta-medio,
+        #alerta-ruim{
+            position: absolute;
+            bottom: 20px; /* Distância do rodapé da tela */
+            left: 20px; /* Distância da esquerda da tela (opcional) */
+        }
+
+        #alerta-bom1 img,
+        #alerta-medio2 img,
+        #alerta-ruim3 img {
+            width: 400px;
+            height: auto;
+            margin-top: -10px;
+        }
+
+        #alerta-bom1,
+        #alerta-medio2,
+        #alerta-ruim3{
+            position: absolute;
+            bottom: -550px; /* Distância do rodapé da tela */
+            right: 20px; /* Distância da esquerda da tela (opcional) */
+        }
     </style>
 </head>
 
@@ -90,6 +122,15 @@
     <div class="chart-c">
         <canvas id="myChart3"></canvas>
     </div>
+    <div id="alerta-bom" style="display: none;">
+        <img src="../assets/img/bom.gif" alt="Bom" />
+    </div>
+    <div id="alerta-medio" style="display: none;">
+        <img src="../assets/img/medio.gif" alt="Médio" />
+    </div>
+    <div id="alerta-ruim" style="display: none;">
+        <img src="../assets/img/ruim.gif" alt="Ruim" />
+    </div>
     <h2 style="
             text-align: center;
             margin: 3rem;
@@ -100,7 +141,17 @@
     </h2>
     <div class="chart-c">
         <canvas id="myChart4"></canvas>
-    </div> <br>
+    </div> 
+    <div id="alerta-bom1" style="display: none;">
+        <img src="../assets/img/bom.gif" alt="Bom" />
+    </div>
+    <div id="alerta-medio2" style="display: none;">
+        <img src="../assets/img/medio.gif" alt="Médio" />
+    </div>
+    <div id="alerta-ruim3" style="display: none;">
+        <img src="../assets/img/ruim.gif" alt="Ruim" />
+    </div>
+    <br>
     <center>
         <a href="quiz.html" class="link"> Tentar Novamente</a>
     </center>
@@ -162,7 +213,32 @@
             const userId = sessionStorage.ID_USUARIO;
             exibirGraficoEvolucaoAcertos(userId, 1, "myChart3");
             exibirGraficoEvolucaoAcertos(userId, 2, "myChart4");
-        };
+            fetchData(userId, 1).then(data => {
+        if (data) {
+            const acertos = data.map(item => item.acertos)[0];
+            if (acertos > 7) {
+                document.getElementById('alerta-bom').style.display = 'block';
+            } else if (acertos >= 5) {
+                document.getElementById('alerta-medio').style.display = 'block';
+            } else {
+                document.getElementById('alerta-ruim').style.display = 'block';
+            }
+        }
+    });
+        fetchData(userId, 2).then(data => {
+        if (data) {
+            const acertos = data.map(item => item.acertos)[0];
+            if (acertos > 7) {
+                document.getElementById('alerta-bom1').style.display = 'block';
+            } else if (acertos >= 5) {
+                document.getElementById('alerta-medio2').style.display = 'block';
+            } else {
+                document.getElementById('alerta-ruim3').style.display = 'block';
+            }
+        }
+    });
+};
+
 
         document.addEventListener("DOMContentLoaded", aparecerGraficos);
 
