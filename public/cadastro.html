@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRAISE DANCE | Cadastro</title>
+  <script src="./js/sessao.js"></script>
+  <link rel="stylesheet" href="./css/estilo.css" />
+  <link rel="shortcut icon" href="assets/img/icon.png " type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+</head>
+
+
+  <header>
+    <a href="index.html"><img src="assets/img/LogoPraise.png" alt="Logo da Empresa" class="logo"></a>
+    <div class="menu-1">
+      <div> <img src="assets/img/elemento.png" alt=""></div>
+    </div>
+
+    <nav class="menu">
+      <ul> <br> <br> 
+        <li><a href="login.html">Login</a></li> <br>
+        <li><a href="index.html">Home</a></li> <br>
+        <li><a href="index.html#sobreMim">Sobre Mim</a></li> <br>
+        <li><a href="index.html#sobreDanca">Sobre a Dança</a></li> <br><br>
+      </ul>
+    </nav>
+  </header>
+
+  <!--header fim-->
+
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="card card-cadastro">
+        <h2>Bem-vindo!</h2>
+        <div class="formulario">
+          <!--
+                         Para inserir mais um campo, copie uma das inputs abaixo.
+                         Assim que inserir vá para o script abaixo.
+                     -->
+        
+          <div class="campo">
+            <span>Nome:</span>
+            <input id="nome_input" type="text" placeholder="Seu nome" />
+          </div>
+          <div class="campo">
+            <span>CPF</span>
+            <input id="cpf_input" type="number" placeholder="Seu cpf" />
+          </div>
+          <div class="campo">
+            <span>E-mail:</span>
+            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+          </div>
+          <div class="campo">
+            <span>Senha:</span>
+            <input id="senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Confirmação da Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+          <a href="login.html" class="linkCadatro">Login</a>
+        </div>
+        <div id="div_aguardar" class="loading-div">
+          <img src="../public/assets/aguardar1.gif" id="loading-gif" />
+        </div>
+
+        <div id="div_erros_login"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--footer inicio-->
+  <footer>
+    <div class="footer">
+      <div class="container">
+        <p>Oficial PRAISE DANCE - AnaMoraes &copy;</p>
+        <br>
+      </div>
+    </div>
+  </footer>
+  <!--footer fim-->
+</body>
+
+</html>
+
+<script>
+
+  function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var cpfVar= cpf_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    if (
+      nomeVar == "" ||
+      cpfVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      alert ("Preencha Todos os campos!");
+
+      finalizarAguardar();
+      return false;
+    } 
+    if (cpfVar.indexOf('.') !== -1 || cpfVar.indexOf('-') !== -1 || isNaN(cpfVar) || cpfVar.length !== 11) {
+        alert("CPF invalido! O CPF deve conter 11 caracteres");
+        finalizarAguardar();
+        return false;
+      }
+
+      if (emailVar.indexOf('@') === -1 || emailVar.indexOf('.') === -1) {
+        alert("E-mail inválido! O email deve conter '@' e '.'");
+        finalizarAguardar();
+        return false;
+      }
+
+      if (senhaVar.length < 6) {
+        alert("A senha deve ter pelo menos 6 caracteres");
+        finalizarAguardar();
+        return false;
+      }
+
+      if (senhaVar !== confirmacaoSenhaVar) {
+        alert("As senhas não coincidem");
+        finalizarAguardar();
+        return false;
+      } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        cpfServer: cpfVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          alert ("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "1000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+
+   // Seleciona o botão do menu
+const menuToggle = document.querySelector('.menu-1');
+// Seleciona o menu de navegação
+const menu = document.querySelector('.menu');
+
+// Adiciona um evento de clique ao botão do menu
+menuToggle.addEventListener('click', function() {
+  // Alterna a classe 'active' no menu de navegação
+  menu.classList.toggle('active');
+});
+
+// Adiciona um evento de clique ao documento inteiro
+document.addEventListener('click', function(event) {
+  // Verifica se o clique ocorreu fora do menu
+  if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+    // Fecha o menu
+    menu.classList.remove('active');
+  }
+});
+</script>

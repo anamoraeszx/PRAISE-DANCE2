@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRAISE DANCE| Quiz</title>
+  <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/dashboards.css">
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet">
+
+  <!-- scripts do Chart.js - 2022-1 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!--FONT AWESOME-->
+  <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+<style>
+
+  p{
+  color: white;
+  margin-top: 570px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2{
+  color: white;
+  margin-top: -80px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center; 
+}
+
+
+</style>
+
+</head>
+
+<body>
+    <header>
+    
+    <div class="menu-1">
+        <div> <img class="img" src="../assets/img/elemento.png" alt=""></div>
+    </div>
+  
+    <nav class="menu">
+    <img class="imgJanela" src="../assets/img/2.png" alt="">
+
+    <ul> <br><br> 
+      <div class="btn-nav-white">
+        <a href="cards.html"><h3> MAIN PAGE </h3></a>
+      </div>
+
+          <div class="btn-nav">
+          <a href="quiz.html"> <h3>QUIZ</h3>
+          </a></div>
+
+          <div class="btn-nav-white">
+          <a href="dashboard.html"> <h3>grafico</h3>
+          </a></div>
+          <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+          </div>
+        </ul>
+      </nav>
+</header>
+
+<div class="container">
+  <a href="ballet.html" class="card1">
+    <h2>ballet</h2>
+    <p>Vamos ver o quanto você sabe sobre ballet &copy </p>
+
+  <a href="hiphop.html" class="card2">
+    <h2>hiphop</h2>
+    <p>Vamos ver o quanto você sabe sobre hiphop &copy </p></a>
+</div>
+ 
+</body>
+
+  
+<script>
+
+  
+  // Seleciona o botão do menu
+          const menuToggle = document.querySelector('.menu-1');
+  // Seleciona o menu de navegação
+    const menu = document.querySelector('.menu');
+
+  // Adiciona um evento de clique ao botão do menu
+  menuToggle.addEventListener('click', function () {
+    // Alterna a classe 'active' no menu de navegação
+    menu.classList.toggle('active');
+  });
+
+  // Adiciona um evento de clique ao documento inteiro
+  document.addEventListener('click', function (event) {
+    // Verifica se o clique ocorreu fora do menu
+  if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+      // Fecha o menu
+  menu.classList.remove('active');
+    }
+  })
+           
+ </script>
