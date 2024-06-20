@@ -1,296 +1,289 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
 
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-		<title>PRAISE DANCE | Quiz</title>	
-		<link rel="stylesheet" href="../css/quiz2.css" />
-		<!--<link rel="stylesheet" href="./../css/estilo.css" /> -->
-		<script src="../js/sessao.js"></script>
-		<script src="./../js/alerta.js"></script>
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
+<head>
+
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+	<title>PRAISE DANCE | Quiz</title>
+	<link rel="stylesheet" href="../css/quiz3.css" />
+	<!--<link rel="stylesheet" href="./../css/estilo.css" /> -->
+	<script src="../js/sessao.js"></script>
+	<script src="./../js/alerta.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link
 		href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-		rel="stylesheet"
-		/>
+		rel="stylesheet" />
 
-		<!-- scripts do Chart.js - 2022-1 -->
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<!--FONT AWESOME-->
-		<script
-			src="https://kit.fontawesome.com/9f7414eb10.js"
-			crossorigin="anonymous"
-		></script>
-		<style>
-			.pergunta{
-				font-weight: bold;
-				font-size: 20px;
-				text-align: center;
-			}
+	<!-- scripts do Chart.js - 2022-1 -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!--FONT AWESOME-->
+	<script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
 
-
-		</style>
-
-	</head>
-
-	<body>
-		<header>
-			<div class="menu-1">
-				<div>
-					<img class="img" src="../assets/img/elemento.png" alt="" />
-				</div>
-			</div>
-
-			<nav class="menu">
-				<img class="imgJanela" src="../assets/img/2.png" alt="" />
-				<h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-				<ul>
-					<br />
-					<br />
-					<div class="btn-nav-white">
-						<a href="cards.html"><h3>MAIN PAGE</h3> </a>
-					</div>
-
-					<div class="btn-nav">
-						<a href="quiz.html"> <h3>QUIZ</h3> </a>
-					</div>
-
-					<div class="btn-nav-white">
-						<a href="dashboard.html"> <h3>grafico</h3> </a>
-					</div>
-					<div class="btn-logout" onclick="limparSessao()">
-						<h3>Sair</h3>
-					</div>
-				</ul>
-			</nav>
-		</header>
-		<div class="quiz">
-			<div class="container">
-				<h1>Quiz de Hip-Hop</h1>
-				<button id="iniciar" class="botao">Iniciar Quiz</button>
-				<div id="pergunta" class="pergunta" style="display: none"></div>
-				<div id="opcoes" class="resposta" style="display: none"></div>
-				<button id="enviar" style="display: none">Enviar</button>
-				<div id="resultado" style="display: none"></div>
+<body>
+	<header>
+		<div class="menu-1">
+			<div>
+				<img class="img" src="../assets/img/elemento.png" alt="" />
 			</div>
 		</div>
 
-		<footer>
-			
-			<div class="footer">
-				<div class="foo">
-					<p> <br><br> <br>Oficial PRAISE DANCE - AnaMoraes &copy;</p>
-					<br />
+		<nav class="menu">
+			<img class="imgJanela" src="../assets/img/2.png" alt="" />
+			<h3>Olá <span id="b_usuario"></span>!</h3>
+			<ul>
+				<br />
+				<br />
+				<div class="btn-nav-white">
+					<a href="cards.html">
+						<h3>MAIN PAGE</h3>
+					</a>
 				</div>
-			</div>
-		</footer>
-	</body>
-	<script>
-		// Seleciona o botão do menu
-		const menuToggle = document.querySelector(".menu-1");
-		// Seleciona o menu de navegação
-		const menu = document.querySelector(".menu");
 
-		// Adiciona um evento de clique ao botão do menu
-		menuToggle.addEventListener("click", function () {
-			// Alterna a classe 'active' no menu de navegação
-			menu.classList.toggle("active");
-		});
+				<div class="btn-nav">
+					<a href="quiz.html">
+						<h3>QUIZ</h3>
+					</a>
+				</div>
 
-		// Adiciona um evento de clique ao documento inteiro
-		document.addEventListener("click", function (event) {
-			// Verifica se o clique ocorreu fora do menu
-			if (
-				!menu.contains(event.target) &&
-				!menuToggle.contains(event.target)
-			) {
-				// Fecha o menu
-				menu.classList.remove("active");
+				<div class="btn-nav-white">
+					<a href="dashboard.html">
+						<h3>grafico</h3>
+					</a>
+				</div>
+				<div class="btn-logout" onclick="limparSessao()">
+					<h3>Sair</h3>
+				</div>
+			</ul>
+		</nav>
+	</header>
+	<div class="quiz-container">
+		<h1>Quiz de Hip-Hop</h1>
+		<button id="iniciar" class="botao">Iniciar Quiz</button>
+		<div id="pergunta" class="quiz-question" style="display: none"></div>
+		<div id="opcoes" class="quiz-options" style="display: none"></div>
+		<button id="enviar" style="display: none">Enviar</button>
+		<div id="resultado" style="display: none"></div>
+	</div>
+	</div>
+</body>
+<script>
+	// Seleciona o botão do menu
+	const menuToggle = document.querySelector(".menu-1");
+	// Seleciona o menu de navegação
+	const menu = document.querySelector(".menu");
+
+	// Adiciona um evento de clique ao botão do menu
+	menuToggle.addEventListener("click", function () {
+		// Alterna a classe 'active' no menu de navegação
+		menu.classList.toggle("active");
+	});
+
+	// Adiciona um evento de clique ao documento inteiro
+	document.addEventListener("click", function (event) {
+		// Verifica se o clique ocorreu fora do menu
+		if (
+			!menu.contains(event.target) &&
+			!menuToggle.contains(event.target)
+		) {
+			// Fecha o menu
+			menu.classList.remove("active");
+		}
+	});
+
+	const perguntasHipHop = [
+		{
+			pergunta: "Quem é considerado o 'pai do hip-hop'?",
+			opcoes: [
+				"Grandmaster Flash",
+				"Afrika Bambaataa",
+				"DJ Kool Herc",
+				"Kurtis Blow",
+			],
+			resposta: "DJ Kool Herc",
+		},
+		{
+			pergunta:
+				"Qual é a forma de dança de rua mais associada ao hip-hop?",
+			opcoes: ["Locking", "Popping", "Breaking", "Krumping"],
+			resposta: "Breaking",
+		},
+		{
+			pergunta:
+				"Qual desses elementos NÃO é considerado parte da cultura hip-hop?",
+			opcoes: ["Rap", "DJing", "Graffiti", "Ballet"],
+			resposta: "Ballet",
+		},
+		{
+			pergunta:
+				"Quem é conhecido por popularizar o hip-hop mainstream com seu álbum 'The Chronic'?",
+			opcoes: [
+				"Tupac Shakur",
+				"Notorious B.I.G.",
+				"Dr. Dre",
+				"Ice Cube",
+			],
+			resposta: "Dr. Dre",
+		},
+		{
+			pergunta:
+				"Qual é o nome do movimento em que o dançarino estica e contrai os músculos rapidamente?",
+			opcoes: ["Locking", "Popping", "Breaking", "Krumping"],
+			resposta: "Popping",
+		},
+		{
+			pergunta:
+				"Qual é o nome do evento de rap improvisado em que os competidores batalham verbalmente?",
+			opcoes: [
+				"DJ Battle",
+				"MC Cipher",
+				"Graffiti Jam",
+				"Breakdance Battle",
+			],
+			resposta: "MC Cipher",
+		},
+		{
+			pergunta: "Quem é considerado o 'rei do rap'?",
+			opcoes: ["Jay-Z", "Eminem", "Nas", "Kanye West"],
+			resposta: "Eminem",
+		},
+		{
+			pergunta:
+				"Qual é o nome do movimento em que o dançarino congela em uma pose dramática?",
+			opcoes: ["Locking", "Popping", "Freeze", "Krumping"],
+			resposta: "Freeze",
+		},
+		{
+			pergunta:
+				"Qual é o nome do estilo de graffiti que utiliza letras estilizadas?",
+			opcoes: ["Tagging", "Throw-up", "Piece", "Wildstyle"],
+			resposta: "Wildstyle",
+		},
+		{
+			pergunta:
+				"Qual é o nome do movimento social e político que emergiu junto com o hip-hop na década de 1970?",
+			opcoes: [
+				"Black Lives Matter",
+				"Civil Rights Movement",
+				"Feminism",
+				"Black Power Movement",
+			],
+			resposta: "Black Power Movement",
+		},
+	];
+
+	let perguntaAtual = 0;
+	let acertos = 0;
+	let erros = 0;
+
+	const elementoPergunta = document.getElementById("pergunta");
+	const elementoOpcoes = document.getElementById("opcoes");
+	const elementoResultado = document.getElementById("resultado");
+	const botaoIniciar = document.getElementById("iniciar");
+	const botaoEnviar = document.getElementById("enviar");
+
+	botaoIniciar.addEventListener("click", () => iniciarQuiz());
+
+	function iniciarQuiz() {
+		perguntaAtual = 0;
+		exibirPergunta();
+		botaoIniciar.style.display = "none";
+		elementoPergunta.style.display = "block";
+		elementoOpcoes.style.display = "block";
+		botaoEnviar.style.display = "none";
+	}
+
+	function exibirPergunta() {
+		elementoPergunta.textContent =
+			perguntasHipHop[perguntaAtual].pergunta;
+		elementoOpcoes.innerHTML = "";
+		for (
+			let i = 0;
+			i < perguntasHipHop[perguntaAtual].opcoes.length;
+			i++
+		) {
+			const botao = document.createElement("button");
+			botao.textContent = perguntasHipHop[perguntaAtual].opcoes[i];
+			botao.classList.add("quiz-opcao"); // Adiciona a classe botao-opcao
+			botao.addEventListener("click", () =>
+				verificarResposta(perguntasHipHop[perguntaAtual].opcoes[i])
+			);
+			elementoOpcoes.appendChild(botao);
+		}
+	}
+
+	function verificarResposta(opcao) {
+		const opcoes = elementoOpcoes.querySelectorAll(".quiz-opcao");
+		opcoes.forEach(botao => {
+			botao.disabled = true; // Desabilita todos os botões após clicar em uma resposta
+			if (botao.textContent === perguntasHipHop[perguntaAtual].resposta) {
+				botao.classList.add("correta");
+			} else if (botao.textContent === opcao) {
+				botao.classList.add("errada");
 			}
 		});
+		if (opcao === perguntasHipHop[perguntaAtual].resposta) {
+			acertos++;
+		} else[
+			erros++
+		]
+		perguntaAtual++;
+		if (perguntaAtual < perguntasHipHop.length) {
+			setTimeout(() => exibirPergunta(), 1000); // Exibe próxima pergunta após 1 segundo
+		} else {
+			setTimeout(() => mostrarResultado(), 1000); // Mostra resultado após 1 segundo
 
-		const perguntasHipHop = [
-			{
-				pergunta: "Quem é considerado o 'pai do hip-hop'?",
-				opcoes: [
-					"Grandmaster Flash",
-					"Afrika Bambaataa",
-					"DJ Kool Herc",
-					"Kurtis Blow",
-				],
-				resposta: "DJ Kool Herc",
-			},
-			{
-				pergunta:
-					"Qual é a forma de dança de rua mais associada ao hip-hop?",
-				opcoes: ["Locking", "Popping", "Breaking", "Krumping"],
-				resposta: "Breaking",
-			},
-			{
-				pergunta:
-					"Qual desses elementos NÃO é considerado parte da cultura hip-hop?",
-				opcoes: ["Rap", "DJing", "Graffiti", "Ballet"],
-				resposta: "Ballet",
-			},
-			{
-				pergunta:
-					"Quem é conhecido por popularizar o hip-hop mainstream com seu álbum 'The Chronic'?",
-				opcoes: [
-					"Tupac Shakur",
-					"Notorious B.I.G.",
-					"Dr. Dre",
-					"Ice Cube",
-				],
-				resposta: "Dr. Dre",
-			},
-			{
-				pergunta:
-					"Qual é o nome do movimento em que o dançarino estica e contrai os músculos rapidamente?",
-				opcoes: ["Locking", "Popping", "Breaking", "Krumping"],
-				resposta: "Popping",
-			},
-			{
-				pergunta:
-					"Qual é o nome do evento de rap improvisado em que os competidores batalham verbalmente?",
-				opcoes: [
-					"DJ Battle",
-					"MC Cipher",
-					"Graffiti Jam",
-					"Breakdance Battle",
-				],
-				resposta: "MC Cipher",
-			},
-			{
-				pergunta: "Quem é considerado o 'rei do rap'?",
-				opcoes: ["Jay-Z", "Eminem", "Nas", "Kanye West"],
-				resposta: "Eminem",
-			},
-			{
-				pergunta:
-					"Qual é o nome do movimento em que o dançarino congela em uma pose dramática?",
-				opcoes: ["Locking", "Popping", "Freeze", "Krumping"],
-				resposta: "Freeze",
-			},
-			{
-				pergunta:
-					"Qual é o nome do estilo de graffiti que utiliza letras estilizadas?",
-				opcoes: ["Tagging", "Throw-up", "Piece", "Wildstyle"],
-				resposta: "Wildstyle",
-			},
-			{
-				pergunta:
-					"Qual é o nome do movimento social e político que emergiu junto com o hip-hop na década de 1970?",
-				opcoes: [
-					"Black Lives Matter",
-					"Civil Rights Movement",
-					"Feminism",
-					"Black Power Movement",
-				],
-				resposta: "Black Power Movement",
-			},
-		];
-
-		let perguntaAtual = 0;
-		let acertos = 0;
-		let erros = 0;
-
-		const elementoPergunta = document.getElementById("pergunta");
-		const elementoOpcoes = document.getElementById("opcoes");
-		const elementoResultado = document.getElementById("resultado");
-		const botaoIniciar = document.getElementById("iniciar");
-		const botaoEnviar = document.getElementById("enviar");
-
-		botaoIniciar.addEventListener("click", () => iniciarQuiz());
-
-		function iniciarQuiz() {
-			perguntaAtual = 0;
-			exibirPergunta();
-			botaoIniciar.style.display = "none";
-			elementoPergunta.style.display = "block";
-			elementoOpcoes.style.display = "block";
-			botaoEnviar.style.display = "none";
 		}
+	}
 
-		function exibirPergunta() {
-			elementoPergunta.textContent =
-				perguntasHipHop[perguntaAtual].pergunta;
-			elementoOpcoes.innerHTML = "";
-			for (
-				let i = 0;
-				i < perguntasHipHop[perguntaAtual].opcoes.length;
-				i++
-			) {
-				const botao = document.createElement("button");
-				botao.textContent = perguntasHipHop[perguntaAtual].opcoes[i];
-				botao.classList.add("botao-opcao"); // Adiciona a classe botao-opcao
-				botao.addEventListener("click", () =>
-					verificarResposta(perguntasHipHop[perguntaAtual].opcoes[i])
-				);
-				elementoOpcoes.appendChild(botao);
-			}
-		}
+	function mostrarResultado() {
+		const totalPerguntas = perguntasHipHop.length;
+		const perguntasRespondidas = acertos + erros;
 
-		function verificarResposta(opcao) {
-			if (opcao === perguntasHipHop[perguntaAtual].resposta) {
-				acertos++;
-			} else[
-				erros++
-			]
-			perguntaAtual++;
-			if (perguntaAtual < perguntasHipHop.length) {
-				exibirPergunta();
-			} else {
-				mostrarResultado();
-			}
-		}
+		elementoPergunta.style.display = "none";
+		elementoOpcoes.style.display = "none";
+		botaoEnviar.style.display = "none";
+		elementoResultado.textContent = `Você acertou ${acertos} de ${perguntasHipHop.length} questões.`;
+		elementoResultado.style.display = "block";
+		enviarPontuacao(acertos, erros, 2);
 
-		function mostrarResultado() {
-			const totalPerguntas = perguntasHipHop.length;
-    		const perguntasRespondidas = acertos + erros;
-
-			elementoPergunta.style.display = "none";
-			elementoOpcoes.style.display = "none";
-			botaoEnviar.style.display = "none";
-			elementoResultado.textContent = `Você acertou ${acertos} de ${perguntasHipHop.length} questões.`;
-			elementoResultado.style.display = "block";
-			enviarPontuacao(acertos, erros, 2);
-
-			// Redirecionar para a página de ranking após 3 segundos
+		// Redirecionar para a página de ranking após 3 segundos
 		setTimeout(() => {
-        window.location.href = 'graficohiphop.html';
-    }, 2000); 
-		}
+			window.location.href = 'graficohiphop.html';
+		}, 2000);
+	}
 
-		function enviarPontuacao(acertos, erros, categoriaId) {
-			const userId = sessionStorage.ID_USUARIO;
-			const url = "/usuarios/armazenarPontuacao";
-			const dados = {
-				userId: userId,
-				acertos: acertos,
-				erros: erros,
-				categoriaId: categoriaId
-			};
+	function enviarPontuacao(acertos, erros, categoriaId) {
+		const userId = sessionStorage.ID_USUARIO;
+		const url = "/usuarios/armazenarPontuacao";
+		const dados = {
+			userId: userId,
+			acertos: acertos,
+			erros: erros,
+			categoriaId: categoriaId
+		};
 
-			fetch(url, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(dados),
+		fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(dados),
+		})
+			.then((response) => {
+				if (response.ok) {
+					console.log("Pontuação enviada com sucesso!");
+				} else {
+					console.error("Falha ao enviar pontuação.");
+				}
 			})
-				.then((response) => {
-					if (response.ok) {
-						console.log("Pontuação enviada com sucesso!");
-					} else {
-						console.error("Falha ao enviar pontuação.");
-					}
-				})
-				.catch((error) => {
-					console.error("Erro ao enviar pontuação:", error);
-				});
-		}
-	</script>
+			.catch((error) => {
+				console.error("Erro ao enviar pontuação:", error);
+			});
+	}
+</script>
+
 </html>

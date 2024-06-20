@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+/* 20/06 */
+/* Reset básico para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais da página */
+body {
+    font-family: "Cinzel", serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 225, 1) 50%, rgba(252, 238, 69, 1) 100%);
+}
+
+/* Estilo do cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: #242121;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.menu-1 {
+    display: flex;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+}
+
+.menu {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    /* Largura do menu */
+    height: 100%;
+    /* Altura igual à altura da tela */
+    background-color: #2421217c;
+    /* Cor de fundo do menu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Sombra para efeito de destaque */
+    border-radius: 2%;
+}
+
+.menu ul li {
+    margin-right: 30px;
+    /* Espaçamento entre os itens da lista */
+    text-align: center;
+    /* Centralizar texto dentro da lista */
+}
+
+.menu.active {
+    display: block;
+    /* Exibido quando ativo */
+    left: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 50px;
+    margin-top: -22%;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.btn-nav {
+    width: 40%;
+    height: 20%;
+    color: white;
+    background-color: #89023E;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px;
+}
+
+.btn-nav a {
+    color: white;
+    text-decoration: underline;
+}
+
+.btn-nav-white {
+    width: 40%;
+    height: 20%;
+    background-color: white;
+    border: 3px solid #89023E;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px;
+}
+
+.btn-nav-white:hover {
+    color: #89023E;
+}
+
+.btn-nav-white h3 {
+    color: #89023E;
+    padding: 0;
+    margin: 0;
+}
+
+
+.btn-nav,
+.btn-nav-white,
+.btn-logout {
+    width: 80%;
+    /* Ajustar largura dos botões */
+    height: 20%;
+    color: white;
+    text-align: center;
+    padding: 1px 4px;
+    margin: 15px auto;
+
+}
+
+.btn-logout {
+    width: 30%;
+    /* Ajustar largura do botão */
+    background-color: #89023E;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.imgJanela {
+    margin-left: 40px;
+    margin-top: 0;
+    width: 70%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    margin-left: 0px;
+    margin-top: 0;
+}
+
+/*QUIZ*/
+
+.quiz-container {
+    background-color: #ffffff58;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    padding: 80px;
+    text-align: center;
+    margin-top: 80px;
+    /* Para evitar sobreposição com o cabeçalho */
+}
+
+.quiz-container h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #ffffff83;
+}
+
+
+
+.botao {
+    background-color: #89023e;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 12px 24px;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao:hover {
+    background-color: #6c0022;
+}
+
+.quiz-question {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.quiz-opcao {
+    background-color: #ffffff5a;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 12px;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 200px;
+    /* Tamanho fixo para as opções */
+    margin: 5px;
+    /* Espaçamento entre as opções */
+}
+
+.quiz-opcao:hover {
+    background-color: #b3b3b3d6;
+}
+
+.quiz-opcao:focus {
+    outline: none;
+    border-color: #f0fff0;
+}
+
+/* Resultado */
+#resultado {
+    display: none;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #333;
+}
+
+/*AO RESPONDER -19/06*/
+
+.correta {
+    background-color: #4caf50; /* Verde */
+    color: white;
+}
+
+.errada {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+}

@@ -25,9 +25,10 @@ CREATE TABLE Categoria (
 	categoria VARCHAR (45)
 );
 
-INSERT INTO Categoria VALUE 
+INSERT INTO Categoria VALUES
 (1, 'ballet'),
-(2, 'Hip Hop');
+(2, 'Hip Hop'),
+(3, 'Jazz'); --19/06
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 
