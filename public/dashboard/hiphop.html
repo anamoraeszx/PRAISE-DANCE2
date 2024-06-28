@@ -23,6 +23,8 @@
 	<script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
+<body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;"></body>
+
 <body>
 	<header>
 		<div class="menu-1">
@@ -33,7 +35,9 @@
 
 		<nav class="menu">
 			<img class="imgJanela" src="../assets/img/2.png" alt="" />
-			<h3>Olá <span id="b_usuario"></span>!</h3>
+			<center>
+				<h3>Olá <span id="b_usuario"></span>!</h3>
+			</center>
 			<ul>
 				<br />
 				<br />
@@ -54,6 +58,13 @@
 						<h3>grafico</h3>
 					</a>
 				</div>
+
+				<div class="btn-nav-white">
+					<a href="mural.html">
+					  <h3>post</h3>
+					</a>
+				  </div>
+				  
 				<div class="btn-logout" onclick="limparSessao()">
 					<h3>Sair</h3>
 				</div>

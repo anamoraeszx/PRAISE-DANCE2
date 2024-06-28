@@ -49,10 +49,12 @@
 
         #alerta-bom,
         #alerta-medio,
-        #alerta-ruim{
+        #alerta-ruim {
             position: fixed;
-            bottom: 20px; /* Distância do rodapé da tela */
-            left: 20px; /* Distância da esquerda da tela (opcional) */
+            bottom: 20px;
+            /* Distância do rodapé da tela */
+            left: 20px;
+            /* Distância da esquerda da tela (opcional) */
         }
     </style>
 </head>
@@ -84,6 +86,12 @@
                         <h3>grafico</h3>
                     </a>
                 </div>
+
+                <div class="btn-nav-white">
+                    <a href="mural.html">
+                        <h3>post</h3>
+                    </a>
+                </div>
                 <div class="btn-logout" onclick="limparSessao()">
                     <h3>Sair</h3>
                 </div>
@@ -103,7 +111,7 @@
         ">
         Quiz Ballet
     </h2>
-    
+
     <div class="chart-c">
         <canvas id="myChart3"></canvas>
     </div>
@@ -117,17 +125,17 @@
         <img src="../assets/img/ruim.gif" alt="Ruim" />
     </div>
 
-  
 
-	<br><br>
+
+    <br><br>
     <center>
         <a href="ballet.html" class="link"> Tentar Novamente</a>
     </center>
-	<br><br>
-	<center>
+    <br><br>
+    <center>
         <a href="dashboard.html" class="link"> Ver Mais</a>
     </center>
-	<br><br>
+    <br><br>
 
     <duv id="msg"></duv>
 
@@ -191,18 +199,18 @@
             exibirGraficoEvolucaoAcertos(userId, 2, "myChart4");
 
             fetchData(userId, 1).then(data => {
-        if (data) {
-            const acertos = data.map(item => item.acertos)[0];
-            if (acertos > 7) {
-                document.getElementById('alerta-bom').style.display = 'block';
-            } else if (acertos >= 5) {
-                document.getElementById('alerta-medio').style.display = 'block';
-            } else {
-                document.getElementById('alerta-ruim').style.display = 'block';
-            }
-        }
-    });
-};
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    if (acertos > 7) {
+                        document.getElementById('alerta-bom').style.display = 'block';
+                    } else if (acertos >= 5) {
+                        document.getElementById('alerta-medio').style.display = 'block';
+                    } else {
+                        document.getElementById('alerta-ruim').style.display = 'block';
+                    }
+                }
+            });
+        };
 
         document.addEventListener("DOMContentLoaded", aparecerGraficos);
 
