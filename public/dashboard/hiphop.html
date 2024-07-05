@@ -23,43 +23,62 @@
 	<script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
+<body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;"></body>
+
 <body>
 	<header>
-		<div class="menu-1">
-			<div>
-				<img class="img" src="../assets/img/elemento.png" alt="" />
-			</div>
-		</div>
+        <div class="menu-1">
+            <div>
+                <img class="img" src="../assets/img/elemento.png" alt="" />
+            </div>
+        </div>
 
-		<nav class="menu">
-			<img class="imgJanela" src="../assets/img/2.png" alt="" />
-			<h3>Olá <span id="b_usuario"></span>!</h3>
-			<ul>
-				<br />
-				<br />
-				<div class="btn-nav-white">
-					<a href="cards.html">
-						<h3>MAIN PAGE</h3>
-					</a>
-				</div>
+        <nav class="menu">
+            <img class="imgJanela" src="../assets/img/2.png" alt="" />
+            <center>
+                <h3>Olá <span id="b_usuario"></span>!</h3>
+            </center>
+            <ul>
+                <br />
+                <br />
+                <div class="btn-nav-white">
+                    <a href="cards.html">
+                        <h3>MAIN PAGE</h3>
+                    </a>
+                </div>
 
-				<div class="btn-nav">
-					<a href="quiz.html">
-						<h3>QUIZ</h3>
-					</a>
-				</div>
+                <div class="btn-nav">
+                    <a href="quiz.html">
+                        <h3>QUIZ</h3>
+                    </a>
+                </div>
 
-				<div class="btn-nav-white">
-					<a href="dashboard.html">
-						<h3>grafico</h3>
-					</a>
-				</div>
-				<div class="btn-logout" onclick="limparSessao()">
-					<h3>Sair</h3>
-				</div>
-			</ul>
-		</nav>
-	</header>
+                <div class="btn-nav-white">
+                    <a href="ranking.html">
+                        <h3>ranking</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="dashboard.html">
+                        <h3>graficoS</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="mural.html">
+                        <h3>post</h3>
+                    </a>
+                </div>
+
+
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
+            </ul>
+        </nav>
+    </header>
 	<div class="quiz-container">
 		<h1>Quiz de Hip-Hop</h1>
 		<button id="iniciar" class="botao">Iniciar Quiz</button>

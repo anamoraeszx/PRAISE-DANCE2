@@ -1,35 +1,38 @@
-var database = require("../database/config");
+const database = require('../database/config');
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
-
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+function listarJogadores() {
+	const instrucaoSql = 'SELECT nome FROM usuario';
+	return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function calcularMediaAcertos() {
+	const instrucaoSql = 'SELECT AVG(acertos) AS media_acertos FROM Resposta';
+	return database.executar(instrucaoSql);
+}
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
+function obterClassificacao() {
+	const instrucaoSql = `
+        SELECT usuario.nome, Resposta.acertos
+        FROM Resposta
+        JOIN usuario ON Resposta.fk_usuario = usuario.id
+        ORDER BY Resposta.acertos DESC
+    `;
+	return database.executar(instrucaoSql);
+}
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+function obterUltimosAcertosErros(fk_usuario) {
+    const instrucaoSql = `
+        SELECT acertos, erros
+        FROM Resposta
+        WHERE fk_usuario = '${fk_usuario}'
+    `;
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-}
+    listarJogadores,
+    calcularMediaAcertos,
+    obterClassificacao,
+    // salvarResultados,
+    obterUltimosAcertosErros
+};

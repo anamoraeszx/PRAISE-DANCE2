@@ -37,10 +37,20 @@ CREATE TABLE Resposta (
     idResposta INT PRIMARY KEY AUTO_INCREMENT,
     acertos INT,
     erros INT,
-    fkUsuario INT,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
+    fk_usuario INT,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
     fkCategoria INT,
     FOREIGN KEY (fkCategoria) REFERENCES Categoria(idCategoria)
 );
 
 select * from Resposta;
+
+
+/* TABELA PARA AVISOS (25/06)*/
+CREATE TABLE aviso (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(100),
+	descricao VARCHAR(150),
+	fk_usuario INT,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);

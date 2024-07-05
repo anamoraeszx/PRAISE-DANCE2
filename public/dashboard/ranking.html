@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/imgs/1-removebg-preview.png" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAISE DANCE ||  Ranking</title>
+    <link rel="stylesheet" href="./../css/ranking.css">
+    <!-- <link rel="stylesheet" href="./../css/estilo.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/sessao.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body
+    onload="validarSessao(); exibirJogadores(); exibirMediaAcertos(); atualizarTabelaClassificacao(); exibirGraficoEvolucaoAcertos()">
+    <header>
+        <div class="menu-1">
+            <div>
+                <img class="img" src="../assets/img/elemento.png" alt="" />
+            </div>
+        </div>
+
+        <nav class="menu">
+            <img class="imgJanela" src="../assets/img/2.png" alt="" />
+            <center>
+                <h3>Olá <span id="b_usuario"></span>!</h3>
+            </center>
+            <ul>
+                <br />
+                <br />
+                <div class="btn-nav-white">
+                    <a href="cards.html">
+                        <h3>MAIN PAGE</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="quiz.html">
+                        <h3>QUIZ</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav">
+                    <a href="ranking.html">
+                        <h3>ranking</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="dashboard.html">
+                        <h3>graficoS</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="mural.html">
+                        <h3>post</h3>
+                    </a>
+                </div>
+
+
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <div class="dash">
+        <div class="grafico-evolucao">
+            <h3>Sua pontuação</h3>
+            <canvas id="graficoEvolucaoAcertos" width="90px" height="50" style="padding: 3rem;"></canvas>
+        </div>
+        <div id="classificacao" class="info-box">
+            <h3>Classificação</h3>
+            <table id="tabelaClassificacao">
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Jogador</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabela"></tbody>
+            </table>
+        </div>
+        <div class="jogadores-media">
+
+            <div class="box">
+                <div id="jogadores" class="info-box">
+                    <h3>Usuários que jogaram:</h3>
+                    <div id="listaJogadores"></div>
+                </div>
+                <div id="mediaAcertos" class="info-box">
+                    <h3>Média de Pontos:</h3>
+                    <p id="mediaValor"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        // Seleciona o botão do menu
+        const menuToggle = document.querySelector(".menu-1");
+        // Seleciona o menu de navegação
+        const menu = document.querySelector(".menu");
+
+        // Adiciona um evento de clique ao botão do menu
+        menuToggle.addEventListener("click", function () {
+            // Alterna a classe 'active' no menu de navegação
+            menu.classList.toggle("active");
+        });
+
+        // Adiciona um evento de clique ao documento inteiro
+        document.addEventListener("click", function (event) {
+            // Verifica se o clique ocorreu fora do menu
+            if (
+                !menu.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+                // Fecha o menu
+                menu.classList.remove("active");
+            }
+        });
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+        function exibirJogadores() {
+            fetch('/medidas/jogadores')
+                .then(response => response.json())
+                .then(data => {
+                    const listaJogadores = document.getElementById("listaJogadores");
+                    listaJogadores.innerText = `${data.length}`;
+                })
+                .catch(error => console.error('Erro ao buscar jogadores:', error));
+        }
+
+        function exibirMediaAcertos() {
+            fetch('/medidas/media-acertos')
+                .then(response => response.json())
+                .then(data => {
+                    var mediaValor = document.getElementById("mediaValor");
+                    mediaValor.innerText = `${Number(data[0].media_acertos).toFixed(0)}`;
+                })
+                .catch(error => console.error('Erro ao buscar média de acertos:', error));
+        }
+
+
+        function atualizarTabelaClassificacao() {
+            fetch('/medidas/classificacao')
+                .then(response => response.json())
+                .then(data => {
+                    var corpoTabela = document.getElementById("corpoTabela");
+
+                    var linhas = corpoTabela.querySelectorAll("tr");
+                    for (var i = 0; i < linhas.length; i++) {
+                        var linha = linhas[i];
+                        var jogador = linha.querySelector("td:nth-child(2)").textContent.trim();
+                        var pontuacao = parseInt(linha.querySelector("td:nth-child(3)").textContent.trim());
+                        console.log(jogador, pontuacao);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var nomeJogador = item.nome;
+                        var pontuacaoJogador = item.acertos;
+
+                        adicionarJogadorTabela(corpoTabela, nomeJogador, pontuacaoJogador, i + 1);
+                    }
+                })
+                .catch(error => console.error('Erro ao buscar classificação:', error));
+        }
+
+        function adicionarJogadorTabela(corpoTabela, nomeJogador, pontuacaoJogador, posicao) {
+            var linha = document.createElement("tr");
+            var colunaPosicao = document.createElement("td");
+
+            var coroa = '';
+            if (posicao === 1) {
+                coroa = ' ../assets/img/ouro.gif';
+                linha.style.backgroundColor = "#60d394";
+            } else if (posicao === 2) {
+                coroa = '../assets/img/prata.gif';
+                linha.style.backgroundColor = "#ffd97d";
+            } else if (posicao === 3) {
+                coroa = '../assets/img/bronze.gif';
+                linha.style.backgroundColor = "#ee6055";
+            }
+
+            var emojiJogador = ' 🌟'
+
+            if (posicao >= 4) {
+                colunaPosicao.textContent = `${posicao}º`;
+            } else {
+                colunaPosicao.innerHTML = `<div style="text-align: center;">${posicao}º<img src='${coroa}' alt='img' style="width: 50px; height: 50px"></div>`;
+            }
+
+            var colunaJogador = document.createElement("td");
+            colunaJogador.textContent = nomeJogador;
+
+            if (nomeJogador === sessionStorage.NOME_USUARIO) {
+                colunaJogador.classList.add("player-highlighted");
+
+                colunaJogador.innerHTML = `${emojiJogador} ${nomeJogador}`
+            }
+
+            var colunaPontuacao = document.createElement("td");
+            colunaPontuacao.textContent = pontuacaoJogador;
+            linha.appendChild(colunaPosicao);
+            linha.appendChild(colunaJogador);
+            linha.appendChild(colunaPontuacao);
+            corpoTabela.appendChild(linha);
+        }
+
+        function exibirGraficoEvolucaoAcertos() {
+            var fk_usuario = sessionStorage.ID_USUARIO;
+
+            fetch(`/medidas/ultimos-acertos-erros/${fk_usuario}`)
+                .then(response => response.json())
+                .then(data => {
+                    var labels = data.map(item => item.data);
+                    var acertos = data.map(item => item.acertos);
+                    var erros = data.map(item => item.erros);
+
+                    var ctx = document.getElementById('graficoEvolucaoAcertos').getContext('2d');
+                    var graficoEvolucaoAcertos = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Últimos Acertos',
+                                data: acertos,
+                                borderColor: '#fdf0d5',
+                                backgroundColor: '#fdf0d5',
+                                borderWidth: 3
+                            }, {
+                                label: 'Últimos Erros',
+                                data: erros,
+                                borderColor: '#780000',
+                                backgroundColor: '#780000',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Erro ao buscar últimos acertos:', error));
+        }
+    </script>
+</body>
+
+</html>

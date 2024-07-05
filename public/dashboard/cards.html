@@ -3,86 +3,114 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAISE DANCE | Main Page</title>
-    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/info.css">
-   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRAISE DANCE | Main Page</title>
+  <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./../css/dashboards.css">
+  <link rel="stylesheet" href="./../css/info.css">
 
-    <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-        <style>
 
-          h4{
-          color: white;
-          margin-top: 360px;
-          font-size: 25px;
-          font-weight: bold;
-          text-align: center;
-        }
-        
-        </style>
+  <script src="../js/sessao.js"></script>
+  <script src="../js/alerta.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <style>
+    h4 {
+      color: white;
+      margin-top: 360px;
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
 
-<!-- <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">  -->
+<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()"> 
+
 <body>
-    <header>
-    
+  <header>
     <div class="menu-1">
-        <div> <img class="img" src="../assets/img/elemento.png" alt=""></div>
-      </div>
-  
-      <nav class="menu">
+        <div>
+            <img class="img" src="../assets/img/elemento.png" alt="" />
+        </div>
+    </div>
 
-        <img class="imgJanela" src="../assets/img/2.png" alt="">
+    <nav class="menu">
+        <img class="imgJanela" src="../assets/img/2.png" alt="" />
+        <center>
+            <h3>Olá <span id="b_usuario"></span>!</h3>
+        </center>
+        <ul>
+            <br />
+            <br />
+            <div class="btn-nav">
+                <a href="cards.html">
+                    <h3>MAIN PAGE</h3>
+                </a>
+            </div>
 
-        <ul> <br> <br> 
-          <div class="btn-nav">
-          <a href="cards.html"><h3> MAIN PAGE </h3>
-          </a></div>
+            <div class="btn-nav-white">
+                <a href="quiz.html">
+                    <h3>QUIZ</h3>
+                </a>
+            </div>
 
-          <div class="btn-nav-white">
-          <a href="quiz.html"> <h3>QUIZ</h3>
-          </a></div>
+            <div class="btn-nav-white">
+                <a href="ranking.html">
+                    <h3>ranking</h3>
+                </a>
+            </div>
 
-          <div class="btn-nav-white">
-          <a href="dashboard.html"> <h3>grafico</h3>
-          </a></div>
-          <div class="btn-logout" onclick="limparSessao()">
+            <div class="btn-nav-white">
+                <a href="dashboard.html">
+                    <h3>graficoS</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="mural.html">
+                    <h3>post</h3>
+                </a>
+            </div>
+
+
+
+            <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
-          </div>
+            </div>
         </ul>
-      </nav>
-    </header>
-</div>
-<br>
-<center>
-  <h2>O que você precisa saber sobre alguns passos de dança</h2>
-</center>
-<br>
-<div class="container">
-  <div class="cards-container">
-          <a href="1.html" class="card01">
-          <h4>Pas de Bourrée</h4></a>
-      
-          <a href="2.html" class="card02">
-          <h4>Plié</h4></a>
-
-          <a href="3.html" class="card03">
-          <h4>Top Rock</h4></a>
-
-          <a href="4.html" class="card04">
-          <h4>Locking</h4></a>
-      </div>
+    </nav>
+</header>
   </div>
-<br> <br>
+  <br>
+  <center>
+    <h2>O que você precisa saber sobre alguns passos de dança</h2>
+  </center>
+  <br>
+  <div class="container">
+    <div class="cards-container">
+      <a href="1.html" class="card01">
+        <h4>Pas de Bourrée</h4>
+      </a>
+
+      <a href="2.html" class="card02">
+        <h4>Plié</h4>
+      </a>
+
+      <a href="3.html" class="card03">
+        <h4>Top Rock</h4>
+      </a>
+
+      <a href="4.html" class="card04">
+        <h4>Locking</h4>
+      </a>
+    </div>
+  </div>
+  <br> <br>
   <center>
     <h2>Você ja conheceu os principais astros do hip-hop?</h2>
   </center>
@@ -90,30 +118,35 @@
 
   <div class="container">
     <div class="cards-container">
-            <a href="jaz.html" class="card05">
-            <h4>Jay-Z</h4></a>
-        
-            <a href="tupac.html" class="card06">
-            <h4>Tupac Shakur (2Pac)</h4></a>
+      <a href="jaz.html" class="card05">
+        <h4>Jay-Z</h4>
+      </a>
+
+      <a href="tupac.html" class="card06">
+        <h4>Tupac Shakur (2Pac)</h4>
+      </a>
     </div>
   </div>
- <br><br>
+  <br><br>
   <center>
     <h2>Você ja conheceu os principais astros do ballet?</h2>
   </center> <br>
   <div class="container">
     <div class="cards-container">
-            <a href="Mikhail.html" class="card07">
-            <h4>Mikhail Baryshnikov</h4></a>
-  
-            <a href="Anna.html" class="card08">
-            <h4>Anna Pavlova</h4></a>
+      <a href="Mikhail.html" class="card07">
+        <h4>Mikhail Baryshnikov</h4>
+      </a>
+
+      <a href="Anna.html" class="card08">
+        <h4>Anna Pavlova</h4>
+      </a>
     </div>
   </div>
-   <br><br>
-<center>
-<h2>Vamos testar o que aprendemos?</h2> <br>
-  <a href="quiz.html" class="legend"> Clique Aqui</a></center>
+  <br><br>
+  <center>
+    <h2>Vamos testar o que aprendemos?</h2> <br>
+    <a href="quiz.html" class="legend"> Clique Aqui</a>
+  </center>
   <br>
 
 </body>
@@ -121,8 +154,8 @@
 
 <script>
 
- // Seleciona o botão do menu
- const menuToggle = document.querySelector('.menu-1');
+  // Seleciona o botão do menu
+  const menuToggle = document.querySelector('.menu-1');
   // Seleciona o menu de navegação
   const menu = document.querySelector('.menu');
 
