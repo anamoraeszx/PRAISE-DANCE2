@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+<<<<<<< HEAD
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,14 @@
     <title>PRAISE DANCE || ranking</title>
     <link rel="stylesheet" href="./../css/ranking.css">
 	<link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+=======
+    <link rel="shortcut icon" href="../assets/imgs/1-removebg-preview.png" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAISE DANCE ||  Ranking</title>
+    <link rel="stylesheet" href="./../css/ranking.css">
+>>>>>>> 4f7163505339d3c00d890186a944810c4cb9fcfd
     <!-- <link rel="stylesheet" href="./../css/estilo.css" /> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/sessao.js"></script>
@@ -93,6 +102,13 @@
         <div class="jogadores-media">
 
             <div class="box">
+<<<<<<< HEAD
+=======
+                <div id="jogadores" class="info-box">
+                    <h3>Usuários que jogaram:</h3>
+                    <div id="listaJogadores"></div>
+                </div>
+>>>>>>> 4f7163505339d3c00d890186a944810c4cb9fcfd
                 <div id="mediaAcertos" class="info-box">
                     <h3>Média de Pontos:</h3>
                     <p id="mediaValor"></p>
@@ -128,6 +144,7 @@
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
         function exibirJogadores() {
+<<<<<<< HEAD
             fetch('/medidas/porcentagem-acertos') // Rota que retorna a porcentagem de acertos
                 .then(response => response.json())
                 .then(data => {
@@ -187,6 +204,15 @@
             linha.appendChild(colunaJogador);
             linha.appendChild(colunaPorcentagem);
             corpoTabela.appendChild(linha);
+=======
+            fetch('/medidas/jogadores')
+                .then(response => response.json())
+                .then(data => {
+                    const listaJogadores = document.getElementById("listaJogadores");
+                    listaJogadores.innerText = `${data.length}`;
+                })
+                .catch(error => console.error('Erro ao buscar jogadores:', error));
+>>>>>>> 4f7163505339d3c00d890186a944810c4cb9fcfd
         }
 
         function exibirMediaAcertos() {
@@ -225,6 +251,50 @@
                 .catch(error => console.error('Erro ao buscar classificação:', error));
         }
 
+<<<<<<< HEAD
+=======
+        function adicionarJogadorTabela(corpoTabela, nomeJogador, pontuacaoJogador, posicao) {
+            var linha = document.createElement("tr");
+            var colunaPosicao = document.createElement("td");
+
+            var coroa = '';
+            if (posicao === 1) {
+                coroa = ' ../assets/img/ouro.gif';
+                linha.style.backgroundColor = "#60d394";
+            } else if (posicao === 2) {
+                coroa = '../assets/img/prata.gif';
+                linha.style.backgroundColor = "#ffd97d";
+            } else if (posicao === 3) {
+                coroa = '../assets/img/bronze.gif';
+                linha.style.backgroundColor = "#ee6055";
+            }
+
+            var emojiJogador = ' 🌟'
+
+            if (posicao >= 4) {
+                colunaPosicao.textContent = `${posicao}º`;
+            } else {
+                colunaPosicao.innerHTML = `<div style="text-align: center;">${posicao}º<img src='${coroa}' alt='img' style="width: 50px; height: 50px"></div>`;
+            }
+
+            var colunaJogador = document.createElement("td");
+            colunaJogador.textContent = nomeJogador;
+
+            if (nomeJogador === sessionStorage.NOME_USUARIO) {
+                colunaJogador.classList.add("player-highlighted");
+
+                colunaJogador.innerHTML = `${emojiJogador} ${nomeJogador}`
+            }
+
+            var colunaPontuacao = document.createElement("td");
+            colunaPontuacao.textContent = pontuacaoJogador;
+            linha.appendChild(colunaPosicao);
+            linha.appendChild(colunaJogador);
+            linha.appendChild(colunaPontuacao);
+            corpoTabela.appendChild(linha);
+        }
+
+>>>>>>> 4f7163505339d3c00d890186a944810c4cb9fcfd
         function exibirGraficoEvolucaoAcertos() {
             var fk_usuario = sessionStorage.ID_USUARIO;
 
@@ -268,4 +338,8 @@
     </script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 4f7163505339d3c00d890186a944810c4cb9fcfd
