@@ -5,7 +5,7 @@
 /*
 comandos para mysql server
 */
-
+DROP DATABASE PRAISE_DANCE;
 CREATE DATABASE PRAISE_DANCE;
 
 USE PRAISE_DANCE;
@@ -27,44 +27,30 @@ CREATE TABLE Categoria (
 
 INSERT INTO Categoria VALUES
 (1, 'ballet'),
-(2, 'Hip Hop');
+(2, 'Hip Hop'),
+(3, 'Jazz'); 
+
+/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 
 	/*Respostas do Usuario e Corretas*/
 CREATE TABLE Resposta (
     idResposta INT PRIMARY KEY AUTO_INCREMENT,
     acertos INT,
     erros INT,
-    fkUsuario INT,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
-	fkCategoria INT,
-	FOREIGN KEY (fkCategoria) REFERENCES Categoria(idCategoria)
+    fk_usuario INT,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
+    fkCategoria INT,
+    FOREIGN KEY (fkCategoria) REFERENCES Categoria(idCategoria)
 );
 
 select * from Resposta;
 
 
-SELECT MAX(acertos) AS max_acertos FROM Resposta;
-select MIN(acertos) as min_acertos from Resposta;
-SELECT AVG(acertos) AS media_acertos FROM Resposta;
-SELECT ROUND(AVG(acertos), 2) AS media_acertos_arredondada FROM Resposta;
-
--- CONETANDO AS TABELAS
-
-SELECT Resposta.idResposta, Resposta.acertos, Resposta.erros, Usuario.nome AS nome_usuario FROM Resposta
-INNER JOIN Usuario ON Resposta.fkUsuario = Usuario.id;
-
-SELECT Resposta.idResposta, Resposta.acertos, Resposta.erros, Categoria.categoria AS nome_categoria FROM Resposta
-INNER JOIN Categoria ON Resposta.fkCategoria = Categoria.idCategoria;
-
-SELECT Resposta.idResposta, Resposta.acertos, Resposta.erros, Usuario.nome AS nome_usuario, Categoria.categoria AS nome_categoria FROM Resposta
-INNER JOIN Usuario ON Resposta.fkUsuario = Usuario.id
-INNER JOIN Categoria ON Resposta.fkCategoria = Categoria.idCategoria;
-
-
-
-
-
-
-
-
-
+/* TABELA PARA AVISOS (25/06)*/
+CREATE TABLE aviso (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(100),
+	descricao VARCHAR(150),
+	fk_usuario INT,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);

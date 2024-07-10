@@ -11,10 +11,11 @@
 
 body {
   font-family: "Cinzel", serif;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #89023e;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,225,1) 48%, rgba(252,238,69,1) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

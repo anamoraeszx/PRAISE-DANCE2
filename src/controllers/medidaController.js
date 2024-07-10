@@ -1,48 +1,69 @@
-var medidaModel = require("../models/medidaModel");
+const medidaModel = require('../models/medidaModel.js');
 
-function buscarUltimasMedidas(req, res) {
-
-    const limite_linhas = 7;
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+function listarJogadores(req, res) {
+	medidaModel.listarJogadores()
+		.then(result => res.status(200).json(result))
+		.catch(erro => {
+			console.error('Erro ao listar jogadores:', erro.sqlMessage);
+			res.status(500).json(erro.sqlMessage);
+		});
 }
 
+function mediaAcertos(req, res) {
+	medidaModel.calcularMediaAcertos()
+		.then(result => res.status(200).json(result))
+		.catch(erro => {
+			console.error('Erro ao calcular média de acertos:', erro.sqlMessage);
+			res.status(500).json(erro.sqlMessage);
+		});
+}
 
-function buscarMedidasEmTempoReal(req, res) {
+function classificacao(req, res) {
+	medidaModel.obterClassificacao()
+		.then(result => res.status(200).json(result))
+		.catch(erro => {
+			console.error('Erro ao obter classificação:', erro.sqlMessage);
+			res.status(500).json(erro.sqlMessage);
+		});
+}
 
-    var idAquario = req.params.idAquario;
+function mediaAcertosErros(req, res) {
+	medidaModel.calcularMediaAcertosErros()
+		.then(result => res.status(200).json(result))
+		.catch(erro => {
+			console.error('Erro ao calcular média de acertos e erros:', erro.sqlMessage);
+			res.status(500).json(erro.sqlMessage);
+		});
+}
 
-    console.log(`Recuperando medidas em tempo real`);
+// function salvarResultados(req, res) {
+//     const { acertos, erros, fk_usuario } = req.body;
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+//     medidaModel.salvarResultados(acertos, erros, fk_usuario)
+//         .then(() => res.status(200).json({ message: 'Resultados salvos com sucesso' }))
+//         .catch(erro => {
+//             console.error('Erro ao salvar resultados:', erro.sqlMessage);
+//             res.status(500).json(erro.sqlMessage);
+//         });
+// }
+
+function ultimosAcertosErros(req, res) {
+    const { fk_usuario } = req.params;
+
+    medidaModel.obterUltimosAcertosErros(fk_usuario)
+        .then(result => res.status(200).json(result))
+        .catch(erro => {
+            console.error('Erro ao obter evolução do usuário:', erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    listarJogadores,
+    mediaAcertos,
+    classificacao,
+    mediaAcertosErros,
+    // salvarResultados,
+    ultimosAcertosErros
+};
 
-}

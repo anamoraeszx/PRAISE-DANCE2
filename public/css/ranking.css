@@ -1,0 +1,256 @@
+/* pagina mural */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+/* 03/07 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais da página */
+body {
+    font-family: "Cinzel", serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 225, 1) 50%, rgba(252, 238, 69, 1) 100%);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: #242121;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.menu-1 {
+    display: flex;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+}
+
+.menu {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    /* Largura do menu */
+    height: 100%;
+    /* Altura igual à altura da tela */
+    background-color: #2421217c;
+    /* Cor de fundo do menu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Sombra para efeito de destaque */
+    border-radius: 2%;
+}
+
+.menu ul li {
+    margin-right: 30px;
+    /* Espaçamento entre os itens da lista */
+    text-align: center;
+    /* Centralizar texto dentro da lista */
+}
+
+.menu.active {
+    display: block;
+    /* Exibido quando ativo */
+    left: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 50px;
+    margin-top: -22%;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.btn-nav {
+    width: 40%;
+    height: 20%;
+    color: white;
+    background-color: #89023E;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px;
+}
+
+.btn-nav a {
+    color: white;
+    text-decoration: underline;
+}
+
+.btn-nav-white {
+    width: 40%;
+    height: 20%;
+    background-color: white;
+    border: 3px solid #89023E;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px;
+}
+
+.btn-nav-white:hover {
+    color: #89023E;
+}
+
+.btn-nav-white h3 {
+    color: #89023E;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-nav,
+.btn-nav-white,
+.btn-logout {
+    width: 80%;
+    /* Ajustar largura dos botões */
+    height: 20%;
+    color: white;
+    text-align: center;
+    padding: 1px 4px;
+    margin: 15px auto;
+}
+
+.btn-logout {
+    width: 30%;
+    /* Ajustar largura do botão */
+    background-color: #89023E;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.imgJanela {
+    margin-left: 40px;
+    margin-top: 0;
+    width: 70%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    margin-left: 0px;
+    margin-top: 0;
+}
+
+.dash {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 100px; /* Ajuste a margem superior conforme necessário */
+    justify-content: space-between; /* Espaço entre os itens */
+}
+
+/* Estilo para a seção de informações globais */
+.jogadores-media {
+    flex-basis: 100%; /* Ocupa 100% da largura disponível */
+}
+
+/* Estilo para os boxes de informações */
+.box {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    background-color: #f0f0f060;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 200px; /* Flexível, mínimo de 200px */
+}
+
+.info-box h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    font-size: 17px;
+}
+
+/* Estilo para a tabela de classificação */
+#classificacao {
+    flex: 1 1 45%; /* Flexível, ocupa até 45% da largura */
+}
+
+#tabelaClassificacao {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#tabelaClassificacao th,
+#tabelaClassificacao td {
+    border: 1px solid #dddddd5e;
+    padding: 10px;
+    text-align: center;
+}
+
+#tabelaClassificacao th {
+    background-color: #f2f2f256;
+}
+
+/* Estilo para o gráfico de evolução */
+.grafico-evolucao {
+    flex: 1 1 45%; /* Flexível, ocupa até 45% da largura */
+}
+
+#graficoEvolucaoAcertos {
+    width: 100%;
+    height: 300px;
+    background-color: #ffffff41;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .dash {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #classificacao,
+    .grafico-evolucao {
+        flex: 1 1 100%;
+    }
+}
+
+.player-highlighted{
+    font-weight: bold;
+}
+
+td{
+    font-weight: bold;
+}

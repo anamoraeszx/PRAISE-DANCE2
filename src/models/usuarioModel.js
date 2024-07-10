@@ -33,17 +33,17 @@ function cadastrar(nome, cpf, email, senha) {
 }
 
 function verificarPontuacaoUsuario(idUsuario, categoriaID) {
-    var instrucaoSql = `SELECT * FROM Resposta WHERE fkUsuario = ${idUsuario} AND fkCategoria = ${categoriaID};`;
+    var instrucaoSql = `SELECT * FROM Resposta WHERE fk_usuario = ${idUsuario} AND fkCategoria = ${categoriaID};`;
     return database.executar(instrucaoSql)
 }
 	
 function inserirPontuacaoUsuario(idUsuario, acertos, erros, fkCategoria) {
-    var instrucaoSql = `INSERT INTO Resposta (acertos, erros, fkUsuario, fkCategoria) VALUES (${acertos}, ${erros} ,${idUsuario}, ${fkCategoria});`;
+    var instrucaoSql = `INSERT INTO Resposta (acertos, erros, fk_usuario, fkCategoria) VALUES (${acertos}, ${erros} ,${idUsuario}, ${fkCategoria});`;
     return database.executar(instrucaoSql);
 }
 
 function atualizarPontuacaoUsuario(idUsuario, acertos, erros, fkCategoria) {
-    var instrucaoSql = `UPDATE Resposta SET acertos = ${acertos}, erros = ${erros} WHERE fkUsuario = ${idUsuario} AND fkCategoria = ${fkCategoria};`;
+    var instrucaoSql = `UPDATE Resposta SET acertos = ${acertos}, erros = ${erros} WHERE fk_usuario = ${idUsuario} AND fkCategoria = ${fkCategoria};`;
     return database.executar(instrucaoSql);
 }
 
@@ -51,7 +51,7 @@ function obterPontuacoes(userId, quizType) {
 	const query = `
         SELECT acertos, erros
         FROM Resposta
-        WHERE fkUsuario = ${userId} AND fkCategoria = ${quizType}
+        WHERE fk_usuario = ${userId} AND fkCategoria = ${quizType}
     `;
 	return database.executar(query);
 }
