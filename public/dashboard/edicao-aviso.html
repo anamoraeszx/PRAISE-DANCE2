@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!-- -15/07 -->
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAISE DANCE| post</title> <!--  15/07 -->
+    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../css/mural.css">
+    <script src="../js/sessao.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;">
+    <!-- <body onload="validarSessao()"> -->
+    <!-- Adicionando o header padrão de toas as paginas -->
+    <header>
+        <div class="menu-1">
+            <div>
+                <img class="img" src="../assets/img/elemento.png" alt="" />
+            </div>
+        </div>
+
+        <nav class="menu">
+            <img class="imgJanela" src="../assets/img/2.png" alt="" />
+            <center>
+                <h3>Olá <span id="b_usuario"></span>!</h3>
+            </center>
+            <ul>
+                <br />
+                <br />
+                <div class="btn-nav-white">
+                    <a href="cards.html">
+                        <h3>MAIN PAGE</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="quiz.html">
+                        <h3>QUIZ</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="ranking.html">
+                        <h3>ranking</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="dashboard.html">
+                        <h3>graficoS</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav">
+                    <a href="mural.html">
+                        <h3>post</h3>
+                    </a>
+                </div>
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="dash-right">
+
+        <div class="avisos">
+            <div class="container"> <br> <br> <br> <br> <br>
+                <div class="card">
+                    <h1>Editar um Post</h1>
+                    <div class="div-form">
+                        <!-- 17/07 -->
+                        <!-- <label>
+                            ID:
+                            <input id="input_id" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
+                        </label> <br> <br> -->
+                        <!-- <label>
+                            Autor:
+                            <input id="input_nome" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
+                                disabled>
+                        </label> -->
+                        <label> <br>
+                            Qual é o seu tipo?
+                            <br> <br>
+                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(196, 196, 196)">
+                        </label>
+                        <br>
+                        <label> <br>
+                            Conta tudo !!
+                            <br> <br>
+                            <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                        </label>
+                        <br> <br>
+                        <button onclick="editar()">Editar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    // 16/07 função para o menu hamburguer
+
+    // Seleciona o botão do menu
+    const menuToggle = document.querySelector(".menu-1");
+    // Seleciona o menu de navegação
+    const menu = document.querySelector(".menu");
+
+    // Adiciona um evento de clique ao botão do menu
+    menuToggle.addEventListener("click", function () {
+        // Alterna a classe 'active' no menu de navegação
+        menu.classList.toggle("active");
+    });
+
+    // Adiciona um evento de clique ao documento inteiro
+    document.addEventListener("click", function (event) {
+        // Verifica se o clique ocorreu fora do menu
+        if (
+            !menu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+            // Fecha o menu
+            menu.classList.remove("active");
+        }
+    });
+
+    function listarInfosDeUm() {
+        console.log("Criar função de trazer informações de post escolhido");
+    }
+
+    // 17/07
+    function editar() {
+        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // 17/07
+                titulo: input_titulo.value,
+                descricao: textarea_descricao.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Boaaaa! seu Post foi editado!");
+                window.location = "/dashboard/mural.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+</script>

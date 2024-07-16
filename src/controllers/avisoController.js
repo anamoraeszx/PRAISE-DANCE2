@@ -88,11 +88,13 @@ function publicar(req, res) {
     }
 }
 
+// 17/07
 function editar(req, res) {
+    var novoTitulo = req.body.titulo;
     var novaDescricao = req.body.descricao;
     var idAviso = req.params.idAviso;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    avisoModel.editar(novoTitulo, novaDescricao, idAviso)
         .then(
             function (resultado) {
                 res.json(resultado);
