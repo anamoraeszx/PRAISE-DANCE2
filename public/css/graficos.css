@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
-/* MAIN PAGE */
-
+/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
@@ -11,26 +10,28 @@
 
 body {
   font-family: "Cinzel", serif;
-  height: 100vh;
-  width: 100%;
-  overflow: auto;   
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-background-image: url(../assets/img/dash3.png);
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 225, 1) 50%, rgba(252, 238, 69, 1) 100%);
 }
 
 header {
-  position: relative;
-  height: 75px;
-  font-weight: bold;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: transparent;
-  z-index: 1;
-  margin-left: -30px;
-  margin-top: 0;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: #242121;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .menu-1 {
@@ -44,25 +45,33 @@ header {
 }
 
 .menu {
-  display: none; /* Inicialmente oculto */
+  display: none;
+  /* Inicialmente oculto */
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px; /* Largura do menu */
-  height: 100%; /* Altura igual à altura da tela */
-  background-color: #2421217c; /* Cor de fundo do menu */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito de destaque */
-  border-radius: 2% ;
+  width: 300px;
+  /* Largura do menu */
+  height: 100%;
+  /* Altura igual à altura da tela */
+  background-color: #2421217c;
+  /* Cor de fundo do menu */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Sombra para efeito de destaque */
+  border-radius: 2%;
 }
 
 .menu ul li {
-  margin-right: 30px; /* Espaçamento entre os itens da lista */
-  text-align: center; /* Centralizar texto dentro da lista */  
+  margin-right: 30px;
+  /* Espaçamento entre os itens da lista */
+  text-align: center;
+  /* Centralizar texto dentro da lista */
 }
 
 .menu.active {
-  display: block; /* Exibido quando ativo */
-  left:0;
+  display: block;
+  /* Exibido quando ativo */
+  left: 0;
 }
 
 .menu ul {
@@ -72,58 +81,61 @@ header {
   display: flex;
   flex-direction: column;
   gap: .4rem;
+  text-decoration: none;
 }
 
 .btn-nav {
-  width: 40%;
-  height: 20%;
-  color: white;
   background-color: #89023E;
-  border-radius: 5px;
-  text-align: center;
-  margin: 20px;
+  color: white;
+  transition: background-color 0s ease;
 }
 
-.btn-nav a{
+.btn-nav:hover {
+  background-color: #6c002e;
+}
+
+.btn-nav a {
   color: white;
   text-decoration: underline;
+  text-decoration: none;
 }
+
+
 
 .btn-nav-white {
-  width: 40%;
-  height: 20%;
-  background-color: white;
-  border: 3px solid #89023E;
-  border-radius: 5px;
-  text-align: center;
-  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.267);
+  color: #89023E;
+  border: 2px solid #89023E;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-nav-white:hover{
-  color: #89023E;
+.btn-nav-white:hover {
+  color: white;
+  background-color: #89023E;
 }
 
 .btn-nav-white h3 {
-  color: #89023E;
+  color: #ffffff;
   padding: 0;
   margin: 0;
+  text-decoration: none;
 }
-
 
 .btn-nav,
 .btn-nav-white,
 .btn-logout {
-  width: 80%; /* Ajustar largura dos botões */
+  width: 80%;
+  /* Ajustar largura dos botões */
   height: 20%;
   color: white;
   text-align: center;
   padding: 1px 4px;
   margin: 15px auto;
-
 }
 
 .btn-logout {
-  width: 30%; /* Ajustar largura do botão */
+  width: 30%;
+  /* Ajustar largura do botão */
   background-color: #89023E;
   color: white;
   border-radius: 10px;
@@ -132,125 +144,141 @@ header {
   cursor: pointer;
 }
 
-.imgJanela{
+
+.imgJanela {
   margin-left: 40px;
   margin-top: 0;
   width: 70%;
   height: 30%;
   display: flex;
   justify-content: center;
-  }
-
-.img{
-width: 200px;
-height: 200px;
-margin-left: 0px;
-margin-top: 0;
 }
 
-/* QUIZ - opcoes */
+.img {
+  width: 200px;
+  height: 200px;
+  margin-left: 0px;
+  margin-top: 0;
+}
 
 .container {
   display: flex;
-  justify-content: center; /* Centraliza os elementos horizontalmente */
-  height: 100vh; /* Define a altura da tela como 100% da altura do viewport */
-}
-
-.card1 {
-  display: inline-block;
-  width: 400px;
-  height: 550px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
-  background-image: url(../assets/img/_209a8f26-979f-4dc8-a21a-8a7973634e76.jpeg);
-  background-size: cover; /* Certifique-se de que a imagem de fundo cubra todo o contêiner */
-  background-position: center; /* Centralize a imagem de fundo */
-  border-radius: 15px;
-  text-decoration: none;
-  color: #000000;
-  transition: transform 0.3s;
-  margin: 0 50px; /* Isso centraliza os elementos horizontalmente */
-  
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.card1 h2,
-.card2 h2{
-  font-size: 40px;
+.card {
+  width: 100%;
+  max-width: 600px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
   text-align: center;
-}
-
-.card2 {
-  display: inline-block;
-  width: 400px;
-  height: 550px;
+  color: #fff;
   padding: 20px;
-  background-image: url(../assets/img/_be361f2a-ec5d-41d7-8f92-660e8488f495.jpeg);
-  background-size: cover; /* Certifique-se de que a imagem de fundo cubra todo o contêiner */
-  background-position: center; /* Centralize a imagem de fundo */
-  border-radius: 15px;
-  text-decoration: none;
-  color: #000000;
   transition: transform 0.3s;
-  margin: 0 50px; /* Isso centraliza os elementos horizontalmente */
 }
 
-.card1:hover,
-.card2:hover {
+.card:nth-child(odd) {
+  background-color: #89023e;
+}
+
+.card:nth-child(even) {
+  background-color: #5d483c;
+}
+
+.card h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.card:hover {
   transform: translateY(-5px);
 }
 
- /* footer*/
-  
- .footer {
+.footer {
+  width: 100%;
   height: 80px;
-  background-color: #89023e;
+  background-color: #242121;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
 }
 
-.footer .foo {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
 }
 
-.footer .foo p {
-  font-weight: bold;
+
+.info-box {
+  background-color: #f0f0f060;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  /* Flexível, mínimo de 200px */
 }
 
-.grafico{
-    background-color: #89023E;
+.info-box h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-.kpi {
-  width: 60%;
-  height: 80px;
+.info-box p {
+  font-size: 17px;
+}
+
+.dash {
+  margin-top: 5%;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.dash2 {
+  margin-top: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.botaoc {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: #000000;
-  border: #E8CFC1 solid 3px;
+  /* Alinha os botões ao centro horizontal */
+  gap: 40px;
+  /* Espaçamento entre os botões */
 }
 
-.desempenho1 {
-  width: 30%;
-  height: 60px;
-  background-color: #E8CFC1;
-  border: #000000 solid 3px;
+.botao {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #89023E;
+  color: #ffffff;
+  text-decoration: none;
+  /* Remove underline from anchor */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-right: 10px;
+  /* Espaçamento entre os botões */
 }
 
-.desempenho2 {
-  width: 30%;
-  height: 60px;
-  background-color: #CBAE99;
-  border: #000000 solid 3px;
-}
-
-.desempenho3 {
-  width: 30%;
-  height: 60px;
-  background-color: #5D483C;
-  border: #000000 solid 3px;
+.botao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }

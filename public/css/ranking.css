@@ -1,23 +1,21 @@
-/* pagina mural */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
-/* 03/07 */
-
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos gerais da página */
 body {
     font-family: "Cinzel", serif;
     background-color: #f0f0f0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    min-height: 100vh;
     background: rgb(131, 58, 180);
     background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 225, 1) 50%, rgba(252, 238, 69, 1) 100%);
 }
@@ -30,7 +28,7 @@ header {
     height: 80px;
     background-color: #242121;
     color: #fff;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -83,41 +81,42 @@ header {
     display: flex;
     flex-direction: column;
     gap: .4rem;
+    text-decoration: none;
 }
 
 .btn-nav {
-    width: 40%;
-    height: 20%;
-    color: white;
     background-color: #89023E;
-    border-radius: 5px;
-    text-align: center;
-    margin: 20px;
+    color: white;
+    transition: background-color 0s ease;
+}
+
+.btn-nav:hover {
+    background-color: #6c002e;
 }
 
 .btn-nav a {
     color: white;
     text-decoration: underline;
+    text-decoration: none;
 }
 
 .btn-nav-white {
-    width: 40%;
-    height: 20%;
-    background-color: white;
-    border: 3px solid #89023E;
-    border-radius: 5px;
-    text-align: center;
-    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.267);
+    color: #89023E;
+    border: 2px solid #89023E;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-nav-white:hover {
-    color: #89023E;
+    color: white;
+    background-color: #89023E;
 }
 
 .btn-nav-white h3 {
-    color: #89023E;
+    color: #ffffff;
     padding: 0;
     margin: 0;
+    text-decoration: none;
 }
 
 .btn-nav,
@@ -159,18 +158,78 @@ header {
     margin-top: 0;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 600px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.card:nth-child(odd) {
+    background-color: #89023e;
+}
+
+.card:nth-child(even) {
+    background-color: #5d483c;
+}
+
+.card h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.footer {
+    width: 100%;
+    height: 80px;
+    background-color: #242121;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
 .dash {
+    margin-top: 5%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    margin-top: 100px; /* Ajuste a margem superior conforme necessário */
-    justify-content: space-between; /* Espaço entre os itens */
+    /* Ajuste a margem superior conforme necessário */
+    /* Espaço entre os itens */
 }
 
 /* Estilo para a seção de informações globais */
 .jogadores-media {
-    flex-basis: 100%; /* Ocupa 100% da largura disponível */
+    flex-basis: 100%;
+    /*Ocupa 100% da largura disponível */
 }
 
 /* Estilo para os boxes de informações */
@@ -186,7 +245,8 @@ header {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1 1 200px; /* Flexível, mínimo de 200px */
+    flex: 1 1 200px;
+    /* Flexível, mínimo de 200px */
 }
 
 .info-box h3 {
@@ -200,7 +260,8 @@ header {
 
 /* Estilo para a tabela de classificação */
 #classificacao {
-    flex: 1 1 45%; /* Flexível, ocupa até 45% da largura */
+    flex: 1 1 45%;
+    /* Flexível, ocupa até 45% da largura */
 }
 
 #tabelaClassificacao {
@@ -220,9 +281,9 @@ header {
     background-color: #f2f2f256;
 }
 
-/* Estilo para o gráfico de evolução */
 .grafico-evolucao {
-    flex: 1 1 45%; /* Flexível, ocupa até 45% da largura */
+    flex: 1 1 45%;
+    /* Flexível, ocupa até 45% da largura */
 }
 
 #graficoEvolucaoAcertos {
@@ -247,10 +308,49 @@ header {
     }
 }
 
-.player-highlighted{
+.player-highlighted {
     font-weight: bold;
 }
 
-td{
+td {
     font-weight: bold;
+}
+
+.scrollable-content {
+    max-height: 400px;
+    /* Altura máxima do conteúdo rolável */
+    overflow-y: auto;
+    /* Adiciona barra de rolagem vertical quando necessário */
+    padding: 20px;
+    margin-top: 20px;
+    /* Ajuste conforme necessário */
+}
+
+.botaoc {
+    display: flex;
+    justify-content: center;
+    /* Alinha os botões ao centro horizontal */
+    gap: 40px;
+    /* Espaçamento entre os botões */
+}
+
+.botao {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #89023E;
+    color: #ffffff;
+    text-decoration: none;
+    /* Remove underline from anchor */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-right: 10px;
+    /* Espaçamento entre os botões */
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }

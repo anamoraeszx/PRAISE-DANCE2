@@ -19,18 +19,28 @@
         .chart-c {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 200px;
+            align-items: flex-start;
+            gap: 50px;
+            flex-wrap: nowrap;
+
         }
 
         canvas {
-            max-width: 500px;
-            max-height: 500px;
-            width: 100%;
-            height: auto;
-            padding: 1rem;
-            border: 4px solid #89023e;
-            background-color: rgba(255, 255, 255, 0.793);
+            height: 100vh;
+
+            /* Defina um valor máximo de largura para o gráfico */
+            width: 50vh;
+            /* Mantenha a altura automática para preservar a proporção */
+            padding: -10px;
+            /* Adicione preenchimento conforme necessário */
+
+            /* Garanta que o preenchimento esteja dentro da largura definida */
+        }
+
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .link {
@@ -49,10 +59,12 @@
 
         #alerta-bom,
         #alerta-medio,
-        #alerta-ruim{
+        #alerta-ruim {
             position: absolute;
-            bottom: 20px; /* Distância do rodapé da tela */
-            left: 20px; /* Distância da esquerda da tela (opcional) */
+            bottom: 20px;
+            /* Distância do rodapé da tela */
+            left: 20px;
+            /* Distância da esquerda da tela (opcional) */
         }
 
         #alerta-bom1 img,
@@ -65,16 +77,20 @@
 
         #alerta-bom1,
         #alerta-medio2,
-        #alerta-ruim3{
+        #alerta-ruim3 {
             position: absolute;
-            bottom: -550px; /* Distância do rodapé da tela */
-            right: 20px; /* Distância da esquerda da tela (opcional) */
+            bottom: -550px;
+            /* Distância do rodapé da tela */
+            right: 20px;
+            /* Distância da esquerda da tela (opcional) */
         }
     </style>
 </head>
 
+<body
+    onload="validarSessao(); exibirJogadores(); exibirMediaAcertos(); atualizarTabelaClassificacao(); exibirGraficoEvolucaoAcertos()">
 
-    <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()"> 
+    <!-- <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()"> -->
     <header>
         <div class="menu-1">
             <div>
@@ -125,55 +141,69 @@
         </nav>
     </header>
 
-    <center>
-        <h2>Aqui sera exibida a sua pontuação</h2>
-    </center> <br>
-    <h2 style="
-            text-align: center;
-            margin: 3rem;
-            margin-top: 0;
-            font-size: 50px;
-            text-decoration: underline #89023e;
-        ">
-        Quiz Ballet
-    </h2>
-    <div class="chart-c">
-        <canvas id="myChart3"></canvas>
-    </div>
-    <div id="alerta-bom" style="display: none;">
-        <img src="../assets/img/bom.gif" alt="Bom" />
-    </div>
-    <div id="alerta-medio" style="display: none;">
-        <img src="../assets/img/medio.gif" alt="Médio" />
-    </div>
-    <div id="alerta-ruim" style="display: none;">
-        <img src="../assets/img/ruim.gif" alt="Ruim" />
-    </div>
-    <h2 style="
-            text-align: center;
-            margin: 3rem;
-            font-size: 50px;
-            text-decoration: underline #89023e;
-        ">
-        Quiz Hip-Hop
-    </h2>
-    <div class="chart-c">
-        <canvas id="myChart4"></canvas>
-    </div> 
-    <div id="alerta-bom1" style="display: none;">
-        <img src="../assets/img/bom.gif" alt="Bom" />
-    </div>
-    <div id="alerta-medio2" style="display: none;">
-        <img src="../assets/img/medio.gif" alt="Médio" />
-    </div>
-    <div id="alerta-ruim3" style="display: none;">
-        <img src="../assets/img/ruim.gif" alt="Ruim" />
-    </div>
-    <br>
-    <center>
-        <a href="quiz.html" class="link"> Tentar Novamente</a>
+
+    <center> <br> <br>
+        <h2>Sua pontuação:</h2>
     </center>
+    <div class="dash2">
+        <div class="info-box">
+            <div class="chart-c">
+                <div class="chart-container">
+                    <h2>Quiz Ballet</h2> <br>
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="alerta-bom" style="display: none;">
+            <img src="../assets/img/bom.gif" alt="Bom" />
+        </div>
+        <div id="alerta-medio" style="display: none;">
+            <img src="../assets/img/medio.gif" alt="Médio" />
+        </div>
+        <div id="alerta-ruim" style="display: none;">
+            <img src="../assets/img/ruim.gif" alt="Ruim" />
+        </div>
+        <div class="info-box">
+            <div class="chart-container">
+                <h2>Quiz HipHop</h2> <br>
+                <canvas id="myChart4"></canvas>
+            </div>
+        </div>
+
+        <div id="alerta-bom1" style="display: none;">
+            <img src="../assets/img/bom.gif" alt="Bom" />
+        </div>
+        <div id="alerta-medio2" style="display: none;">
+            <img src="../assets/img/medio.gif" alt="Médio" />
+        </div>
+        <div id="alerta-ruim3" style="display: none;">
+            <img src="../assets/img/ruim.gif" alt="Ruim" />
+        </div>
+        <div class="info-box">
+        <div class="chart-container">
+            <h2>Quiz Jazz</h2> <br>
+            <canvas id="myChart5"></canvas>
+        </div></div>
+
+        <div id="alerta-bom1" style="display: none;">
+            <img src="../assets/img/bom.gif" alt="Bom" />
+        </div>
+        <div id="alerta-medio2" style="display: none;">
+            <img src="../assets/img/medio.gif" alt="Médio" />
+        </div>
+        <div id="alerta-ruim3" style="display: none;">
+            <img src="../assets/img/ruim.gif" alt="Ruim" />
+        </div>
+
+
+    </div>
+    <div class="botaoc">
+        <a href="quiz.html" class="botao"> Tentar Novamente</a>
+        <a href="ranking.html" class="botao"> Ver minha classificação</a>
+    </div>
     <script>
+
         const fetchData = (userId, quiz) => {
             return fetch(`/usuarios/obterPontuacoes/${userId}/${quiz}`)
                 .then(response => {
@@ -190,25 +220,35 @@
                 });
         };
 
-        const criarGrafico = (ctx, tipo, acertos, erros) => {
+        // 25/07
+        criarGrafico = (ctx, tipo, acertos, erros) => {
             new Chart(ctx, {
-                type: tipo,
+                type: 'bar',  // Tipo de gráfico "bar" para gráfico de barras
                 data: {
                     labels: ["Acertos", "Erros"],
                     datasets: [{
-                        data: [acertos, erros],
-                        backgroundColor: ["rgba(39, 163, 0, 0.4)", "rgba(186, 12, 12, 0.4)"],
-                        borderColor: ["rgb(39, 163, 0)", "rgb(186, 12, 12)"],
+                        label: 'Quantidade',
+                        data: [acertos, erros], // Dados de acertos e erros
+                        backgroundColor: [
+                            'rgba(137, 2, 62, 1)', // Cor para acertos
+                            'rgba(48, 52, 63 , 1)'  // Cor para erros
+                        ],
+                        borderColor: [
+                            'rgba(137, 2, 62, 0.1)',   // Cor da borda para acertos
+                            'rgba(48, 52, 63 , 0.1)'    // Cor da borda para erros
+                        ],
                         borderWidth: 2,
-                    }],
+                        barThickness: 80  // Ajustei aqui a largura das barras
+                    }]
                 },
                 options: {
                     scales: {
+
                         y: {
-                            beginAtZero: true,
-                        },
-                    },
-                },
+                            beginAtZero: true
+                        }
+                    }
+                }
             });
         };
 
@@ -222,40 +262,59 @@
                     console.log(`Erros para quiz ${quiz}:`, erros);
 
                     const ctx = document.getElementById(chartId).getContext("2d");
-                    criarGrafico(ctx, "pie", acertos, erros);
+                    criarGrafico(ctx, "bar", acertos, erros);
                 }
             });
         };
+
+        // 23/07
 
         const aparecerGraficos = () => {
             const userId = sessionStorage.ID_USUARIO;
             exibirGraficoEvolucaoAcertos(userId, 1, "myChart3");
             exibirGraficoEvolucaoAcertos(userId, 2, "myChart4");
+            exibirGraficoEvolucaoAcertos(userId, 3, "myChart5");
+
             fetchData(userId, 1).then(data => {
-        if (data) {
-            const acertos = data.map(item => item.acertos)[0];
-            if (acertos > 7) {
-                document.getElementById('alerta-bom').style.display = 'block';
-            } else if (acertos >= 5) {
-                document.getElementById('alerta-medio').style.display = 'block';
-            } else {
-                document.getElementById('alerta-ruim').style.display = 'block';
-            }
-        }
-    });
-        fetchData(userId, 2).then(data => {
-        if (data) {
-            const acertos = data.map(item => item.acertos)[0];
-            if (acertos > 7) {
-                document.getElementById('alerta-bom1').style.display = 'block';
-            } else if (acertos >= 5) {
-                document.getElementById('alerta-medio2').style.display = 'block';
-            } else {
-                document.getElementById('alerta-ruim3').style.display = 'block';
-            }
-        }
-    });
-};
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    // if (acertos > 7) {
+                    //     document.getElementById('alerta-bom').style.display = 'block';
+                    // } else if (acertos >= 5) {
+                    //     document.getElementById('alerta-medio').style.display = 'block';
+                    // } else {
+                    //     document.getElementById('alerta-ruim').style.display = 'block';
+                    // }
+                }
+            });
+            fetchData(userId, 2).then(data => {
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    // if (acertos > 7) {
+                    //     document.getElementById('alerta-bom1').style.display = 'block';
+                    // } else if (acertos >= 5) {
+                    //     document.getElementById('alerta-medio2').style.display = 'block';
+                    // } else {
+                    //     document.getElementById('alerta-ruim3').style.display = 'block';
+                    // }
+                }
+            });
+
+            // 23/07
+
+            fetchData(userId, 3).then(data => {
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    // if (acertos > 7) {
+                    //     document.getElementById('alerta-bom1').style.display = 'block';
+                    // } else if (acertos >= 5) {
+                    //     document.getElementById('alerta-medio2').style.display = 'block';
+                    // } else {
+                    //     document.getElementById('alerta-ruim3').style.display = 'block';
+                    // }
+                }
+            });
+        };
 
 
         document.addEventListener("DOMContentLoaded", aparecerGraficos);
@@ -272,6 +331,7 @@
                 menu.classList.remove("active");
             }
         });
+
     </script>
 </body>
 

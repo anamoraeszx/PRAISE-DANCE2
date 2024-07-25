@@ -1,25 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAISE DANCE || ranking</title>
-    <link rel="stylesheet" href="./../css/ranking.css">
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRAISE-DANCE | Dashboards</title>
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../assets/imgs/1-removebg-preview.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/ranking.css" />
     <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <style>
+        .chart-c {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            /* Ajuste o gap conforme necessário */
+            flex-wrap: wrap;
+            /* Permite que os gráficos se movam para a linha seguinte em telas menores */
+        }
+
+        canvas {
+            max-width: 400px;
+            /* Ajuste o tamanho máximo conforme necessário */
+            max-height: 400px;
+            /* Ajuste o tamanho máximo conforme necessário */
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            border: 4px solid #00000000;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .link {
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #alerta-bom img,
+        #alerta-medio img,
+        #alerta-ruim img {
+            width: 400px;
+            height: auto;
+            margin: 10px;
+        }
+
+        #alerta-bom,
+        #alerta-medio,
+        #alerta-ruim {
+            position: absolute;
+            bottom: 20px;
+            /* Distância do rodapé da tela */
+            left: 20px;
+            /* Distância da esquerda da tela (opcional) */
+        }
+
+        #alerta-bom1 img,
+        #alerta-medio2 img,
+        #alerta-ruim3 img {
+            width: 400px;
+            height: auto;
+            margin-top: -10px;
+        }
+
+        #alerta-bom1,
+        #alerta-medio2,
+        #alerta-ruim3 {
+            position: absolute;
+            bottom: -550px;
+            /* Distância do rodapé da tela */
+            right: 20px;
+            /* Distância da esquerda da tela (opcional) */
+        }
+    </style>
 </head>
-<body onload="validarSessao(); exibirJogadores(); exibirMediaAcertos(); atualizarTabelaClassificacao(); exibirGraficoEvolucaoAcertos()">
+
+<body
+    onload="validarSessao(); exibirJogadores(); exibirMediaAcertos(); atualizarTabelaClassificacao(); exibirGraficoEvolucaoAcertos()">
+
+    <!-- <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()"> -->
     <header>
         <div class="menu-1">
             <div>
                 <img class="img" src="../assets/img/elemento.png" alt="" />
             </div>
         </div>
+
         <nav class="menu">
             <img class="imgJanela" src="../assets/img/2.png" alt="" />
             <center>
@@ -33,11 +112,13 @@
                         <h3>MAIN PAGE</h3>
                     </a>
                 </div>
+
                 <div class="btn-nav-white">
                     <a href="quiz.html">
                         <h3>QUIZ</h3>
                     </a>
                 </div>
+
                 <div class="btn-nav">
                     <a href="ranking.html">
                         <h3>ranking</h3>
@@ -48,6 +129,7 @@
                         <h3>graficoS</h3>
                     </a>
                 </div>
+
                 <div class="btn-nav-white">
                     <a href="mural.html">
                         <h3>post</h3>
@@ -59,11 +141,9 @@
             </ul>
         </nav>
     </header>
+
+
     <div class="dash">
-        <div class="grafico-evolucao">
-            <h3>Sua pontuação</h3>
-            <canvas id="graficoEvolucaoAcertos" width="90px" height="50" style="padding: 3rem;"></canvas>
-        </div>
         <div id="classificacao" class="info-box">
             <h3>Classificação</h3>
             <table id="tabelaClassificacao">
@@ -72,32 +152,189 @@
                         <th>Posição</th>
                         <th>Jogador</th>
                         <th>Acertos</th>
+
                     </tr>
                 </thead>
                 <tbody id="corpoTabela"></tbody>
             </table>
         </div>
-        <div class="jogadores-media">
-            <div class="box">
 
-                <div id="mediaAcertos" class="info-box">
-                    <h3>Média de Pontos:</h3>
-                    <p id="mediaValor"></p>
+        <br> <br> <br> <br> <br> <br>
+        <div class="info-box">
+
+            <center>
+                <h2>Sua pontuação:</h2>
+            </center> <br> <br>
+            <div class="scrollable-content">
+                <div class="chart-c">
+                    <div class="chart-container">
+                        <h2>Quiz Ballet</h2>
+                        <canvas id="myChart3"></canvas>
+                    </div>
+
+                    <div id="alerta-bom" style="display: none;">
+                        <img src="../assets/img/bom.gif" alt="Bom" />
+                    </div>
+                    <div id="alerta-medio" style="display: none;">
+                        <img src="../assets/img/medio.gif" alt="Médio" />
+                    </div>
+                    <div id="alerta-ruim" style="display: none;">
+                        <img src="../assets/img/ruim.gif" alt="Ruim" />
+                    </div>
+                    <div class="chart-container">
+                        <h2>Quiz HipHop</h2>
+                        <canvas id="myChart4"></canvas>
+                    </div>
+
+                    <div id="alerta-bom1" style="display: none;">
+                        <img src="../assets/img/bom.gif" alt="Bom" />
+                    </div>
+                    <div id="alerta-medio2" style="display: none;">
+                        <img src="../assets/img/medio.gif" alt="Médio" />
+                    </div>
+                    <div id="alerta-ruim3" style="display: none;">
+                        <img src="../assets/img/ruim.gif" alt="Ruim" />
+                    </div>
+
+                    <div class="chart-container">
+                        <h2>Quiz Jazz</h2>
+                        <canvas id="myChart5"></canvas>
+                    </div>
+
+                    <div id="alerta-bom1" style="display: none;">
+                        <img src="../assets/img/bom.gif" alt="Bom" />
+                    </div>
+                    <div id="alerta-medio2" style="display: none;">
+                        <img src="../assets/img/medio.gif" alt="Médio" />
+                    </div>
+                    <div id="alerta-ruim3" style="display: none;">
+                        <img src="../assets/img/ruim.gif" alt="Ruim" />
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
+
+    <div class="botaoc">
+        <a href="quiz.html" class="botao"> Tentar Novamente</a>
+    </div>
     <script>
+
+        const fetchData = (userId, quiz) => {
+            return fetch(`/usuarios/obterPontuacoes/${userId}/${quiz}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        console.error("Erro ao obter dados:", response.statusText);
+                        return null;
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao obter dados:", error);
+                    return null;
+                });
+        };
+
+        criarGrafico = (ctx, tipo, acertos, erros) => {
+            new Chart(ctx, {
+                type: tipo,
+                data: {
+                    labels: ["Acertos", "Erros"],
+                    datasets: [{
+                        data: [acertos, erros],
+                        backgroundColor: ["rgba(137, 2, 62, 1)", "rgba(48, 52, 63 , 1)"],
+                        borderColor: ["rgb(137, 2, 62, 0.1)", "rgb(48, 52, 63 , 0.1)"],
+                        borderWidth: 2,
+                    }],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+        };
+
+        const exibirGraficoEvolucaoAcertos = (userId, quiz, chartId) => {
+            fetchData(userId, quiz).then(data => {
+                if (data) {
+                    const acertos = data.map(item => item.acertos);
+                    const erros = data.map(item => item.erros);
+
+                    console.log(`Acertos para quiz ${quiz}:`, acertos);
+                    console.log(`Erros para quiz ${quiz}:`, erros);
+
+                    const ctx = document.getElementById(chartId).getContext("2d");
+                    criarGrafico(ctx, "pie", acertos, erros);
+                }
+            });
+        };
+
+        const aparecerGraficos = () => {
+            const userId = sessionStorage.ID_USUARIO;
+            exibirGraficoEvolucaoAcertos(userId, 1, "myChart3");
+            exibirGraficoEvolucaoAcertos(userId, 2, "myChart4");
+            exibirGraficoEvolucaoAcertos(userId, 3, "myChart5");
+
+            fetchData(userId, 1).then(data => {
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    // if (acertos > 7) {
+                    //     document.getElementById('alerta-bom').style.display = 'block';
+                    // } else if (acertos >= 5) {
+                    //     document.getElementById('alerta-medio').style.display = 'block';
+                    // } else {
+                    //     document.getElementById('alerta-ruim').style.display = 'block';
+                    // }
+                }
+            });
+            fetchData(userId, 2).then(data => {
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    // if (acertos > 7) {
+                    //     document.getElementById('alerta-bom1').style.display = 'block';
+                    // } else if (acertos >= 5) {
+                    //     document.getElementById('alerta-medio2').style.display = 'block';
+                    // } else {
+                    //     document.getElementById('alerta-ruim3').style.display = 'block';
+                    // }
+                }
+            });
+
+            fetchData(userId, 3).then(data => {
+                if (data) {
+                    const acertos = data.map(item => item.acertos)[0];
+                    // if (acertos > 7) {
+                    //     document.getElementById('alerta-bom1').style.display = 'block';
+                    // } else if (acertos >= 5) {
+                    //     document.getElementById('alerta-medio2').style.display = 'block';
+                    // } else {
+                    //     document.getElementById('alerta-ruim3').style.display = 'block';
+                    // }
+                }
+            });
+        };
+
+
+        document.addEventListener("DOMContentLoaded", aparecerGraficos);
+
         const menuToggle = document.querySelector(".menu-1");
         const menu = document.querySelector(".menu");
-        menuToggle.addEventListener("click", function () {
+
+        menuToggle.addEventListener("click", () => {
             menu.classList.toggle("active");
         });
-        document.addEventListener("click", function (event) {
+
+        document.addEventListener("click", event => {
             if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
                 menu.classList.remove("active");
             }
         });
+
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
         function exibirJogadores() {
@@ -183,45 +420,7 @@
                 })
                 .catch(error => console.error('Erro ao buscar classificação:', error));
         }
-
-        function exibirGraficoEvolucaoAcertos() {
-            var fk_usuario = sessionStorage.ID_USUARIO;
-            fetch(`/medidas/ultimos-acertos-erros/${fk_usuario}`)
-                .then(response => response.json())
-                .then(data => {
-                    var labels = data.map(item => item.data);
-                    var acertos = data.map(item => item.acertos);
-                    var erros = data.map(item => item.erros);
-                    var ctx = document.getElementById('graficoEvolucaoAcertos').getContext('2d');
-                    var graficoEvolucaoAcertos = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Últimos Acertos',
-                                data: acertos,
-                                borderColor: '#fdf0d5',
-                                backgroundColor: '#fdf0d5',
-                                borderWidth: 3
-                            }, {
-                                label: 'Últimos Erros',
-                                data: erros,
-                                borderColor: '#780000',
-                                backgroundColor: '#780000',
-                                borderWidth: 3
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                })
-                .catch(error => console.error('Erro ao buscar últimos acertos:', error));
-        }
     </script>
 </body>
+
 </html>
