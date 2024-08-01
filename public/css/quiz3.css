@@ -83,43 +83,52 @@ header {
     display: flex;
     flex-direction: column;
     gap: .4rem;
+    text-decoration: none;
 }
 
 .btn-nav {
-    width: 40%;
-    height: 20%;
-    color: white;
     background-color: #89023E;
-    border-radius: 5px;
-    text-align: center;
-    margin: 20px;
+    color: white;
+    transition: background-color 0s ease;
+
+
+}
+
+.btn-nav:hover {
+    background-color: #6c002e;
 }
 
 .btn-nav a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.btn-nav-white a {
+    color: white;
+    text-decoration: none;
 }
 
 .btn-nav-white {
-    width: 40%;
-    height: 20%;
-    background-color: white;
-    border: 3px solid #89023E;
-    border-radius: 5px;
-    text-align: center;
-    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.267);
+    color: #89023E;
+    border: 2px solid #89023E;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+
+
+
 .btn-nav-white:hover {
-    color: #89023E;
+    color: white;
+    background-color: #89023E;
 }
 
 .btn-nav-white h3 {
-    color: #89023E;
+    color: #ffffff;
     padding: 0;
     margin: 0;
+    text-decoration: none;
 }
-
 
 .btn-nav,
 .btn-nav-white,
@@ -131,7 +140,6 @@ header {
     text-align: center;
     padding: 1px 4px;
     margin: 15px auto;
-
 }
 
 .btn-logout {
@@ -144,6 +152,7 @@ header {
     margin-bottom: 50px;
     cursor: pointer;
 }
+
 
 .imgJanela {
     margin-left: 40px;
@@ -160,6 +169,7 @@ header {
     margin-left: 0px;
     margin-top: 0;
 }
+
 
 /*QUIZ*/
 
@@ -245,11 +255,13 @@ header {
 /*AO RESPONDER -19/06*/
 
 .correta {
-    background-color: #4caf50; /* Verde */
+    background-color: #4caf50;
+    /* Verde */
     color: white;
 }
 
 .errada {
-    background-color: #f44336; /* Vermelho */
+    background-color: #f44336;
+    /* Vermelho */
     color: white;
 }

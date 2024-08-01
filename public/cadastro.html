@@ -13,21 +13,44 @@
 </head>
 
 
-  <header>
-    <a href="index.html"><img src="assets/img/LogoPraise.png" alt="Logo da Empresa" class="logo"></a>
-    <div class="menu-1">
-      <div> <img src="assets/img/elemento.png" alt=""></div>
-    </div>
+<header>
+  <a href="index.html"><img src="assets/img/LogoPraise.png" alt="Logo da Empresa" class="logo"></a>
+  <div class="itemsHeader">
+    <h4><a href="index.html">Início</a></h4>
+    <h4><a href="#" id="linkSobreDanca">Sobre a Dança</a></h4>
+    <h4><a href="#" id="linkSobreMim">Sobre mim</a></h4>
+  </div>
 
-    <nav class="menu">
-      <ul> <br> <br> 
-        <li><a href="login.html">Login</a></li> <br>
-        <li><a href="index.html">Home</a></li> <br>
-        <li><a href="index.html#sobreMim">Sobre Mim</a></li> <br>
-        <li><a href="index.html#sobreDanca">Sobre a Dança</a></li> <br><br>
-      </ul>
-    </nav>
-  </header>
+   <div class="menu-1">
+          <div>
+              <img class="img" src="../assets/img/elemento.png" alt="" />
+          </div>
+      </div>
+
+      <nav class="menu">
+          <img class="imgJanela" src="../assets/img/2.png" alt="" />
+          <ul>
+              <br />
+              <br />
+              <div class="btn-nav-white">
+                  <a href="index.html">
+                      <h3>Inicio</h3>
+                  </a>
+              </div>
+
+              <div class="btn-nav-white">
+                  <a href="login.html">
+                      <h3>Login</h3>
+                  </a>
+              </div>
+              <div class="btn-nav">
+                  <a href="cadastro.html">
+                      <h3>Cadastro</h3>
+                  </a>
+              </div>
+          </ul>
+      </nav>
+</header>
 
   <!--header fim-->
 
@@ -36,16 +59,12 @@
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
       </div>
-    </div>
-    <div class="container">
-      <div class="card card-cadastro">
+    </div></div>
+
+    <div class="containerb">
+      <div class="form">
         <h2>Bem-vindo!</h2>
         <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-        
           <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -73,10 +92,15 @@
           <img src="../public/assets/aguardar1.gif" id="loading-gif" />
         </div>
 
-        <div id="div_erros_login"></div>
-      </div>
+
+        <!-- <div id="div_erros_login"></div> -->
+      </div>        
+      
+      <div class="image">
+          <img src="" alt="">
+        </div>
     </div>
-  </div>
+  
 
   <!--footer inicio-->
   <footer>

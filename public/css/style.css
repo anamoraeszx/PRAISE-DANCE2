@@ -7,9 +7,8 @@
   box-sizing: border-box;
 }
 
-
-
 body {
+  font-family: "Cinzel", serif;
   height: 90vh;
   width: 100%;
   overflow: auto;
@@ -77,10 +76,11 @@ img {
   top: 0;
   height: 200px;
   width: 145px;
-  
+
 }
 
 /*MENU HAMBURGUER (NAVEGAR PELO SITE) */
+/*  31/07 NOVO MENU  */
 
 .menu-1 {
   display: flex;
@@ -89,56 +89,133 @@ img {
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 3%;
-  margin-top: 4.5%;
+  margin: 5%;
 }
 
 .menu {
-  display: none; /* Inicialmente oculto */
+  display: none;
+  /* Inicialmente oculto */
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px; /* Largura do menu */
-  height: 100%; /* Altura igual à altura da tela */
-  background-color: #89023f7c; /* Cor de fundo do menu */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito de destaque */
-  border-radius: 2%;;
-  
+  width: 300px;
+  /* Largura do menu */
+  height: 100%;
+  /* Altura igual à altura da tela */
+  background-color: #1b2021;
+  /* Cor de fundo do menu */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Sombra para efeito de destaque */
+  border-radius: 2%;
 }
 
 .menu ul li {
-  margin-right: 30px; /* Espaçamento entre os itens da lista */
-  border-bottom: 1px solid black; /* Adicionar uma linha inferior */
+  margin-right: 30px;
+  /* Espaçamento entre os itens da lista */
+  text-align: center;
+  /* Centralizar texto dentro da lista */
 }
 
 .menu.active {
-  display: block; /* Exibido quando ativo */
+  display: block;
+  /* Exibido quando ativo */
+  right: 0;
 }
 
 .menu ul {
   list-style-type: none;
-  padding: 0;
-}
-
-.menu li {
-  padding: 10px;
-}
-
-.menu a {
+  padding: 50px;
+  margin-top: -22%;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
   text-decoration: none;
-  color: #ffffff;
-  font-size: 3vh;
-  font-family: "Cinzel", serif;
 }
 
-.menu a:hover {
-  color: #1b2021;
+.btn-nav {
+  background-color: #89023E;
+  color: white;
+  transition: background-color 0s ease;
+
+
+}
+
+.btn-nav:hover {
+  background-color: #6c002e;
+}
+
+.btn-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-nav-white a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-nav-white {
+  background-color: rgba(255, 255, 255, 0.048);
+  color: #89023E;
+  border: 2px solid #89023E;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.btn-nav-white:hover {
+  color: white;
+  background-color: #89023E;
+}
+
+.btn-nav-white h3 {
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+.btn-nav,
+.btn-nav-white,
+.btn-logout {
+  width: 80%;
+  height: 20%;
+  color: white;
+  text-align: center;
+  padding: 1px 4px;
+  margin: 15px auto;
+}
+
+.btn-logout {
+  width: 30%;
+  background-color: #89023E;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+
+.imgJanela {
+  margin-left: 40px;
+  margin-top: 0;
+  width: 70%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 200px;
+  height: 200px;
+  margin-left: 0px;
+  margin-top: 0;
 }
 
 /* MAIN */
 
 .container-main {
-text-align: center;
+  text-align: center;
 }
 
 .logosite {
@@ -165,14 +242,15 @@ text-align: center;
   font-weight: 800;
 }
 
-/* SERVIÇOS */
+
+/* SOBRE MIM */
 
 .sobreMim-container {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;  
+  gap: 2rem;
   font-family: "Cinzel", serif;
 }
 
@@ -187,7 +265,7 @@ text-align: center;
 
 }
 
-.sobreMim-texto{
+.sobreMim-texto {
   width: 40vw;
   height: 100%;
   text-align: center;
@@ -196,21 +274,21 @@ text-align: center;
   gap: 2rem;
 }
 
-.sobreMim-texto h3{
+.sobreMim-texto h3 {
   color: #fff;
   font-size: 35px;
   font-family: "Cinzel", serif;
   text-align: left;
 }
 
-.sobreMim-texto p{
+.sobreMim-texto p {
   color: #ffff;
   text-align: left;
 }
 
-.sobreMim-texto a{
+.sobreMim-texto a {
   text-align: left;
- 
+
 }
 
 .sobreMim-card {
@@ -220,9 +298,9 @@ text-align: center;
   padding: 10px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: -4px 1px 57px 25px rgba(0,0,0,0.79);
-  -webkit-box-shadow: -4px 1px 57px 25px rgba(0,0,0,0.79);
-  -moz-box-shadow: -4px 1px 57px 25px rgba(0,0,0,0.79);
+  box-shadow: -4px 1px 57px 25px rgba(0, 0, 0, 0.79);
+  -webkit-box-shadow: -4px 1px 57px 25px rgba(0, 0, 0, 0.79);
+  -moz-box-shadow: -4px 1px 57px 25px rgba(0, 0, 0, 0.79);
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -231,31 +309,31 @@ text-align: center;
 
 
 .titulo {
-  
+
   background-clip: text;
-  padding-bottom: 5rem;  
+  padding-bottom: 5rem;
   font-family: "Cinzel", serif;
 
 }
 
-.card1{
+.card1 {
   background-image: url(../assets/img/video1.gif);
   background-repeat: no-repeat;
   background-size: cover;
-  color: white; 
+  color: white;
   text-shadow: black 0.10em 0.10em 0.10em;
   background-size: cover;
-  -letter-spacing: 8px ;
+  -letter-spacing: 8px;
   font-size: 21px;
 }
 
-.card2{
+.card2 {
   background-image: url("../assets/img/video2.gif");
   background-repeat: no-repeat;
   background-size: cover;
-  -letter-spacing: 8px ;
+  -letter-spacing: 8px;
   font-size: 19px;
-  color: white; 
+  color: white;
   text-shadow: black 0.10em 0.10em 0.10em;
   text-align: center;
   display: flex;
@@ -263,45 +341,29 @@ text-align: center;
   align-items: center;
 }
 
-.card2 p{
+.card2 p {
   margin-top: 70%;
   font-family: "Cinzel", serif;
 }
 
-.card3{
+.card3 {
   background-image: url("../assets/img/video3.gif");
   background-repeat: no-repeat;
   background-size: cover;
-  -letter-spacing: 4px ;
+  -letter-spacing: 4px;
   font-size: 21px;
-  color: white; 
+  color: white;
   text-shadow: black 0.10em 0.10em 0.10em
 }
 
-.card3 h3{
+.card3 h3 {
   margin-top: 140%;
-}
-
-
-.Saiba-Mais{
-  color: #ffffff;
-  background-color: #89023e;
-  border: 2px solid #89023e;
-  border-radius: 20px;
-  padding: 10px 15px;
-  width: 19%;
-}
-
-.Saiba-Mais:hover{
-  /* text-decoration: underline #89023e; */
-  color: #fff;
-  background-color: transparent;
 }
 
 
 .sobreMim-card:hover {
   transform: translateY(-10px);
-  
+
 }
 
 .sobreMim-card h3 {
@@ -314,7 +376,7 @@ text-align: center;
   margin-bottom: 200px;
 }
 
-#sobreMim{
+#sobreMim {
   background-color: #1b2021;
   padding-top: 50px;
   padding-bottom: 100px;
@@ -330,7 +392,36 @@ text-align: center;
   color: transparent;
 }
 
-/* SOBRE NÓS */
+/* 31/07 botão de saiba mais */
+
+.botaoc {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+
+}
+
+.botao {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #89023E;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  margin-right: 450px;
+}
+
+.botao:hover {
+  transform: translateY(-7px);
+  background-color: #6c0024;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* SOBRE Dança*/
 
 .sobreDanca-container {
   display: flex;
@@ -340,16 +431,16 @@ text-align: center;
 }
 
 .sobreDanca-card {
-  width: 310px;
-  height: 590px;
+  width: 700px;
+  height: 290px;
   margin: 10px;
   padding: 15px;
-  background-color: #FFff;
+  background-color: #1b20213b;
   border-radius: 8px;
-  box-shadow: -4px 1px 57px 25px rgba(0,0,0,0.79);
-  -webkit-box-shadow: -4px 1px 57px 25px rgba(0,0,0,0.79);
-  -moz-box-shadow: -4px 1px 57px 25px rgba(0,0,0,0.79);
-  transition: transform 0.3s ease;
+  /* box-shadow: -4px 1px 57px 25px rgba(0, 0, 0, 0.79);
+  -webkit-box-shadow: -4px 1px 57px 25px rgba(0, 0, 0, 0.79);
+  -moz-box-shadow: -4px 1px 57px 25px rgba(0, 0, 0, 0.79); */
+  transition: transform 0.1s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -361,20 +452,20 @@ text-align: center;
 }
 
 .sobreDanca-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-20px);
 }
 
 .sobreDanca-card h3 {
-  color: #000000;
+  color: #ffffff;
   font-size: 50px;
 }
 
 .sobreDanca-card p {
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 200px;
 }
 
-#sobreDanca{
+#sobreDanca {
   background-color: #FFff;
   padding-top: 50px;
   padding-bottom: 100px;
@@ -382,24 +473,24 @@ text-align: center;
 }
 
 #sobreDanca h2 {
-  color:#000000;
+  color: #000000;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 
- #sobreDanca {
+#sobreDanca {
   background-color: #89023e;
   padding: 50px 0;
   color: #fff;
- }
+}
 
 
 .titulo-sobreDanca {
   text-align: center;
   margin-bottom: 5rem;
   font-size: 2.5rem;
-} 
+}
 
 
 #sobreDanca .container {

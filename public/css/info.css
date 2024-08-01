@@ -1,225 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+/* 30/07 finalizando o css da main Page */
+
 body {
+    font-family: "Cinzel", serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
     margin: 0;
-    padding: 0;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 225, 1) 48%, rgba(252, 238, 69, 1) 100%);
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #242121;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 100%;
+    margin-top: 70px; /* Altura do header */
 }
-.cards-container {
+
+.menu-1 {
     display: flex;
-    justify-content: space-around;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
     align-items: center;
+    justify-content: center;
+    margin: 5%;
+}
+
+.menu {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    /* Largura do menu */
+    height: 100%;
+    /* Altura igual à altura da tela */
+    background-color: #2421217c;
+    /* Cor de fundo do menu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Sombra para efeito de destaque */
+    border-radius: 2%;
+}
+
+.menu ul li {
+    margin-right: 10px;
+    /* Espaçamento entre os itens da lista */
+    text-align: center;
+    /* Centralizar texto dentro da lista */
+}
+
+.menu.active {
+    display: block;
+    /* Exibido quando ativo */
+    left: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 50px;
+    margin-top: -30%;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    text-decoration: none;
+}
+
+.btn-nav {
+    background-color: #89023E;
+    color: white;
+    transition: background-color 0s ease;
+}
+
+.btn-nav:hover {
+    background-color: #6c002e;
+}
+
+.btn-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.btn-nav-white {
+    background-color: rgba(255, 255, 255, 0.267);
+    color: #89023E;
+    border: 2px solid #89023E;
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.btn-nav-white:hover {
+    color: white;
+    background-color: #89023E;
+}
+
+.btn-nav-white h3 {
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.btn-nav-white a {
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.btn-nav,
+.btn-nav-white,
+.btn-logout {
+    width: 80%;
+    /* Ajustar largura dos botões */
+    height: 20%;
+    color: white;
+    text-align: center;
+    padding: 1px 4px;
+    margin: 15px auto;
+}
+
+.btn-logout {
+    width: 30%;
+    /* Ajustar largura do botão */
+    background-color: #89023E;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.imgJanela {
+    margin-left: 40px;
+    margin-top: 0;
+    width: 70%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    margin-left: 0px;
+    margin-top: 0;
+}
+
+.container{
+    margin-top: 35%;
+}
+
+.container2{
+    margin-top: 45%;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     width: 100%;
+    max-width: 1200px; /* Tamanho máximo do container */
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #ffffff7c;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); /* 25% da largura do container menos o gap */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    max-width: 100%; /* Ajusta a largura da imagem para o tamanho do card */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 150px; /* Altura máxima da imagem */
     margin-bottom: 20px;
 }
-.card01,
-.card02,
-.card03,
-.card04 {
-    width: 300px;
-    height: 300px;
-    border: 3px solid #ccc;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    margin-bottom: 10px; 
-    margin-right: 10px;
-}
 
-.card01{
-    background-image: url( ../assets/img/ballet1.png);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
+.card h3 {
+    margin: 20px 0;
+    font-size: 20px;
+    color: #6c002e;
 
 }
 
-.card02{
-    background-image: url( ../assets/img/ballet2.png);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-
-
+.card p {
+    font-size: 16px;
+    color: #000000;
 }
 
-.card03{
-    background-image: url( ../assets/img/hiphop3.png);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card04{
-    background-image: url( ../assets/img/hiphop4.png);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-
-.card01:hover,
-.card02:hover,
-.card03:hover,
-.card04:hover {
-    transform: scale(1.05);
-}
-
-a{
-    color: white;
-}
-
-
-h4 {
-    margin-top: 250px;
-    color: #9e2d60;
-    font-size: 25PX;
-
-}
-
-h2{
-    color: white;
-}
-
-h6{
-    color: white;
+.intro-text {
     text-align: center;
-    font-size: 18px;
-}
+    margin-top: 20px;
+  }
+  
+  .intro-text h2 {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .intro-text p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+  }
 
-p {
-
-    color: white;
+  .footer {
+  
+    height: 150px;
+    color: #000000;
+    display: flex;
+    font-size: 15px;
+  }
+  
+  .footer .container2 {
+    justify-content: center;
     text-align: center;
-    font-size: 18px;
+  }
+  
 
-}
-
-.card_01{
-    background-image: url( ../assets/img/jay-z.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-
-}
-
-.card_02{
-    background-image: url( ../assets/img/tupac.jpeg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-
-
-}
-
-.card_03{
-    background-image: url( ../assets/img/gif03.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card_04{
-    background-image: url( ../assets/img/git04.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card05,
-.card06,
-.card07,
-.card08 {
-    width: 350px;
-    height: 300px;
-    border: 3px solid #ccc;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    margin-bottom: 10px; 
-}
-
-.card05{
-    background-image: url( ../assets/img/jay-z.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-
-}
-
-.card06{
-    background-image: url( ../assets/img/tupac.jpeg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-
-
-}
-
-.card07{
-    background-image: url( ../assets/img/Mikhail.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card08{
-    background-image: url( ../assets/img/anna-pavlova.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-
-.card05:hover,
-.card06:hover,
-.card07:hover,
-.card08:hover {
-    transform: scale(1.05);
-}
-
-.card05_1,
-.card06_1,
-.card07_1,
-.card08_1{
-    height: 40vh;
-    width: 700px;
-    border: 3px solid #ccc;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    margin: auto; /* Centraliza horizontalmente */
-    margin-top: calc((90vh - 70vh) / 2); /* Centraliza verticalmente */
-}
-
-.card05_1{
-    background-image: url( ../assets/img/images.jpeg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card06_1{
-    background-image: url( ../assets/img/tupacpalco.jpeg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card07_1{
-    background-image: url( ../assets/img/Mikhail-Baryshnikov.jpg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.card08_1{
-    background-image: url( ../assets/img/aninha.jpeg);
-    background-size: cover; /* Ajusta o tamanho do GIF para cobrir todo o espaço do card */
-    background-position: center; /* Centraliza a posição do GIF no card */
-}
-
-.legend{
-    color: white;
-}

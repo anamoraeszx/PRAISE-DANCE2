@@ -8,17 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRAISE DANCE | Main Page</title>
   <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-  <link rel="stylesheet" href="./../css/dashboards.css">
+  <!-- <link rel="stylesheet" href="./../css/dashboards.css"> -->
   <link rel="stylesheet" href="./../css/info.css">
-
-
   <script src="../js/sessao.js"></script>
   <script src="../js/alerta.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <style>
+  <!-- <style>
     h4 {
       color: white;
       margin-top: 360px;
@@ -26,7 +24,7 @@
       font-weight: bold;
       text-align: center;
     }
-  </style>
+  </style> -->
 </head>
 
 <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()"> 
@@ -42,7 +40,8 @@
     <nav class="menu">
         <img class="imgJanela" src="../assets/img/2.png" alt="" />
         <center>
-            <h3>Olá <span id="b_usuario"></span>!</h3>
+          <!-- 31/07 -->
+            <h3>Bem Vindo(a) <span id="b_usuario"></span>!</h3>
         </center>
         <ul>
             <br />
@@ -85,70 +84,64 @@
         </ul>
     </nav>
 </header>
-  </div>
-  <br>
-  <center>
-    <h2>O que você precisa saber sobre alguns passos de dança</h2>
-  </center>
-  <br>
+<body>
+
+  <!-- 30/07 ao clicar no card o usuario é direcionado ao link do wikipedia de acordo com o dançarino que escolher -->
   <div class="container">
-    <div class="cards-container">
-      <a href="1.html" class="card01">
-        <h4>Pas de Bourrée</h4>
-      </a>
-
-      <a href="2.html" class="card02">
-        <h4>Plié</h4>
-      </a>
-
-      <a href="3.html" class="card03">
-        <h4>Top Rock</h4>
-      </a>
-
-      <a href="4.html" class="card04">
-        <h4>Locking</h4>
-      </a>
+    <div class="intro-text">
+      <h2>Bem-vindo ao PRAISE DANCE!</h2>
+      <p>Explore os grandes nomes da dança aqui.</p> <br>
     </div>
-  </div>
-  <br> <br>
-  <center>
-    <h2>Você ja conheceu os principais astros do hip-hop?</h2>
-  </center>
-  <br>
-
-  <div class="container">
-    <div class="cards-container">
-      <a href="jaz.html" class="card05">
-        <h4>Jay-Z</h4>
-      </a>
-
-      <a href="tupac.html" class="card06">
-        <h4>Tupac Shakur (2Pac)</h4>
-      </a>
+    <div class="card-container">
+        <a href="https://pt.wikipedia.org/wiki/Kool_Herc" class="card">
+            <img src="../assets/img/DJ Kool Herc.jpeg" alt="img">
+            <h3>DJ Kool Herc</h3>
+            <p>Clique aqui e saiba mais sobre o Rei do HipHop</p>
+        </a>
+        <a href="https://pt.wikipedia.org/wiki/MC_Hammer" class="card">
+            <img src="../assets/img/MC Hammer.jpeg" alt="img">
+            <h3>MC Hammer</h3>
+            <p>Clique aqui e saiba mais sobre um dos maiores astros do HipHop</p>
+        </a>
+        <a href="https://pt.wikipedia.org/wiki/Bob_Fosse" class="card">
+            <img src="../assets/img/Bob Fosse.webp" alt="img">
+            <h3>Bob Fosse</h3>
+            <p>Clique aqui e saiba mais sobre o Rei do Jazz</p>
+        </a>
+        <a href="https://pt.wikipedia.org/wiki/Gene_Kelly" class="card">
+            <img src="../assets/img/Gene Kelly.jpeg" alt="img">
+            <h3>Gene Kelly</h3>
+            <p>Clique aqui e saiba mais sobre um dos maiores astros do Jazz</p>
+        </a>
+        <a href="https://pt.wikipedia.org/wiki/Rudolf_Nureyev" class="card">
+            <img src="../assets/img/Rudolf Nureyev.jpeg" alt="img">
+            <h3>Rudolf Nureyev</h3>
+            <p>Clique aqui e saiba mais sobre o Rei do ballet</p>
+        </a>
+        <a href="https://pt.wikipedia.org/wiki/Anna_Pavlova" class="card">
+            <img src="../assets/img/Anna Pavlova.jpeg" alt="img">
+            <h3>Anna Pavlova</h3>
+            <p>Clique aqui e saiba mais sobre a rainha do ballet</p>
+        </a>
+        <a href="https://en.wikipedia.org/wiki/Carlos_Acosta" class="card">
+            <img src="../assets/img/Carlos Acosta.jpeg" alt="img">
+            <h3>Carlos Acosta</h3>
+            <p>Clique aqui e saiba mais sobre um dos maiores astros do Ballet</p>
+        </a>
+        <a href="https://pt.wikipedia.org/wiki/Natalia_Osipova" class="card">
+            <img src="../assets/img/Natalia Osipova.avif" alt="img">
+            <h3>Natalia Osipova</h3>
+            <p>Clique aqui e saiba mais sobre uma das maiores estrelas do Ballet</p>
+        </a>
     </div>
-  </div>
-  <br><br>
-  <center>
-    <h2>Você ja conheceu os principais astros do ballet?</h2>
-  </center> <br>
-  <div class="container">
-    <div class="cards-container">
-      <a href="Mikhail.html" class="card07">
-        <h4>Mikhail Baryshnikov</h4>
-      </a>
 
-      <a href="Anna.html" class="card08">
-        <h4>Anna Pavlova</h4>
-      </a>
-    </div>
   </div>
-  <br><br>
-  <center>
-    <h2>Vamos testar o que aprendemos?</h2> <br>
-    <a href="quiz.html" class="legend"> Clique Aqui</a>
-  </center>
-  <br>
 
+<div class="footer">
+  <div class="container2">
+    <h4>Praise Dance  &hearts; 2024 &copy; v2.0</h4>
+  </div>
+</div>
 </body>
 
 

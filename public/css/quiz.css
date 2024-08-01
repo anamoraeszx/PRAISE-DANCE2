@@ -86,10 +86,16 @@ header {
   margin: 20px;
 }
 
-.btn-nav a{
+.btn-nav a {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
 }
+
+.btn-nav-white a{
+  color: white;
+  text-decoration: none;
+}
+
 
 .btn-nav-white {
   width: 40%;
